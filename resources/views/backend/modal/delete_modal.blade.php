@@ -4,10 +4,10 @@
      data-keyboard="false"
      data-backdrop="static"
 >
-    <div class="modal-dialog  modal-sm modal-dialog-centered">
+    <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content text-center modal-content-radius">
             <div class="modal-header btn-primary rounded-pill">
-                <h4 class="modal-title {{setFont()}}">
+                <h4 class="modal-title">
                     @if(systemSetting())
                         {{ systemSetting()->app_short_name }}
                     @else

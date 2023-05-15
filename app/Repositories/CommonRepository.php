@@ -115,16 +115,25 @@ class CommonRepository
         if ($request->status != null) {
             $result = $result->where('status', $request->status);
         }
-        if ($request->name != null) {
-            $result = $result
-                ->where('name_en', 'LIKE', '%'.$request->name.'%')
-                ->orWhere('name_np', 'LIKE', '%'.$request->name.'%');
-        }
-        $orderBy = getLan() == 'np' ? 'name_np' : 'name_en';
 
-        return $result->orderBy($orderBy, 'ASC')
+        return $result->orderBy('id', 'desc')
             ->paginate(10);
     }
+
+    public function getCmsPageData($request)
+    {
+        $result = $this->model;
+        if ($request->status != null) {
+            $result = $result->where('status', $request->status);
+        }
+
+        return $result->orderBy('order', 'ASC')
+            ->paginate(10);
+    }
+
+
+
+
 
     public function getFiscalYearData($request)
     {

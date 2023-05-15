@@ -35,14 +35,6 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <div class="theme-switch-wrapper nav-link">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" style="margin: 3px !important;" id="checkbox"/>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </li>
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 <img src="@if(isset(userInfo()->image))

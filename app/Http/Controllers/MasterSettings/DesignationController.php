@@ -4,7 +4,7 @@ namespace App\Http\Controllers\MasterSettings;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Roles\RoleRequest;
-use App\Models\MasterSettings\CmsPage;
+use App\Models\MasterSettings\Designation;
 use App\Repositories\CommonRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 
-class CmsPageController extends BaseController
+class DesignationController extends BaseController
 {
     protected CommonRepository $model;
 
 
-    public function __construct(CmsPage $model
+    public function __construct(Designation $model
     ) {
         parent::__construct();
         // set the model
@@ -33,11 +33,11 @@ class CmsPageController extends BaseController
     {
         try {
 
-                DB::beginTransaction();
-                $role = $this->model->find($id);
-                $this->model->delete($id);
-                DB::commit();
-                session()->flash('success', Lang::get('message.flash_messages.deleteMessage'));
+            DB::beginTransaction();
+            $role = $this->model->find($id);
+            $this->model->delete($id);
+            DB::commit();
+            session()->flash('success', Lang::get('message.flash_messages.deleteMessage'));
 
             return back();
         } catch (\Exception $e) {
@@ -56,14 +56,14 @@ class CmsPageController extends BaseController
     public function index(Request $request)
     {
         try {
-            $data['page_url'] = 'masterSettings/cmsPages';
-            $data['page_route'] = 'cmsPages';
+            $data['page_url'] = 'masterSettings/designations';
+            $data['page_route'] = 'designations';
 
-            $data['results'] = $this->model->getCmsPageData($request);
-            $data['page_title'] = 'Cms Page';
+            $data['results'] = $this->model->getData($request);
+            $data['page_title'] = 'Designation';
             $data['request'] = $request;
 
-            return view('backend.masterSettings.cmsPage.index', $data);
+            return view('backend.masterSettings.designation.index', $data);
         } catch (\Exception $e) {
             Session::flash('server_error', Lang::get('message.commons.technicalError'));
 
@@ -77,7 +77,7 @@ class CmsPageController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RoleRequest $request): RedirectResponse
     {
         try {
             $data = $request->all();
@@ -103,18 +103,18 @@ class CmsPageController extends BaseController
     {
         try {
             $id = (int) $id;
-                $role = $this->model->find($id);
-                if ($role->status == 0) {
-                    DB::beginTransaction();
-                    $this->model->status($role->id, 1);
-                    DB::commit();
-                    session()->flash('success', Lang::get('message.flash_messages.statusActiveMessage'));
-                } elseif ($role->status == 1) {
-                    DB::beginTransaction();
-                    $this->model->status($role->id, 0);
-                    DB::commit();
-                    session()->flash('success', Lang::get('message.flash_messages.statusInactiveMessage'));
-                }
+            $role = $this->model->find($id);
+            if ($role->status == 0) {
+                DB::beginTransaction();
+                $this->model->status($role->id, 1);
+                DB::commit();
+                session()->flash('success', Lang::get('message.flash_messages.statusActiveMessage'));
+            } elseif ($role->status == 1) {
+                DB::beginTransaction();
+                $this->model->status($role->id, 0);
+                DB::commit();
+                session()->flash('success', Lang::get('message.flash_messages.statusInactiveMessage'));
+            }
 
             return back();
         } catch (\Exception $e) {
@@ -131,7 +131,7 @@ class CmsPageController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(RoleRequest $request, int $id): RedirectResponse
     {
         try {
             DB::beginTransaction();
