@@ -229,10 +229,8 @@ class UserController extends BaseController
 
             //check image form request
             if (! empty($request->file('image'))) {
-                if (! empty($request->file('image'))) {
                     $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->full_name);
                     $imageSuccess = true;
-                }
             }
             $data['created_by'] = userInfo()->id;
             //check empty code data

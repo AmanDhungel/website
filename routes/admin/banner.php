@@ -8,3 +8,5 @@ Route::resource('/bannersManagement', BannerManagementController::class)
 
 Route::post('/bannersManagement/status/{id}', [BannerManagementController::class, 'status']);
 
+Route::post('/bannersManagement/order/{id}', [BannerManagementController::class, 'order']);
+
