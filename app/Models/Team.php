@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\MasterSettings\Designation;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Team extends Model
 {
     use SoftDeletes;
+    const TEAM_PATH = 'uploads/teams';
 
     protected $fillable =
         [
@@ -32,4 +35,18 @@ class Team extends Model
             'deleted_by',
             'status',
         ];
+
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function designation(): BelongsTo
+    {
+        return $this->belongsTo(Designation::class, 'designation_id');
+    }
 }

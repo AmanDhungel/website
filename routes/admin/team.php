@@ -8,3 +8,5 @@ Route::resource('/teamsManagement', TeamManagementController::class)
 
 Route::post('/teamsManagement/status/{id}', [TeamManagementController::class, 'status']);
 
+Route::post('/teamsManagement/order/{id}', [TeamManagementController::class, 'order']);
+

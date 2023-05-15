@@ -43,48 +43,6 @@ class DesignationTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Software Engineer',
-                'short_name' => 'SE',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Full Stack Developer',
-                'short_name' => 'FSD',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Software Developer',
-                'short_name' => 'SD',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Web Developer',
-                'short_name' => 'WD',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Front End Developer',
-                'short_name' => 'FD',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Mobile App Developer',
-                'short_name' => 'MAD',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Front End Designer',
-                'short_name' => 'FED',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
                 'name' => 'Human Resource Manager',
                 'short_name' => 'HRM',
                 'created_at' => Carbon::now(),

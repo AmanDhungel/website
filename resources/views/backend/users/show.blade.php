@@ -112,28 +112,6 @@
                         @endif
                     </div>
 
-
-                    <?php
-                    use App\Models\Logs\LoginLogs;use Carbon\Carbon;$logInfo = LoginLogs::query()
-                        ->where('user_id', $data->id)
-                        ->latest()->first();
-                    if (isset($logInfo))
-                        $lastLogin = Carbon::createFromTimeStamp(strtotime($logInfo->created_at))->diffForHumans()
-                    ?>
-                    @if(isset($logInfo))
-                        <div class="form-group col-md-4 {{setFont()}}">
-                            <label for="">
-                                {{trans('message.pages.profile.last_logged_in')}}
-                            </label>
-                            <input type="text"
-                                   class="form-control"
-                                   value="{{  $lastLogin  }}"
-                                   readonly
-                            >
-
-                        </div>
-                    @endif
-
                     @if($data->image !=null)
                         <div class="form-group col-md-4 {{setFont()}}">
                             <label for="">
