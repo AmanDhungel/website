@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
+use App\Models\Subscriber;
 use App\Models\User;
 use App\Repositories\CommonRepository;
 use Exception;
@@ -35,6 +37,10 @@ class HomeController extends BaseController
     {
         try {
             $data['total_user'] = CommonRepository::getCommonCountData($this->user);
+            $data['total_contact_message'] = ContactMessage::count();
+            $data['today_contact_message'] = ContactMessage::query()->where('message_date',date('Y-m-d'))->count();
+            $data['total_subscriber'] = Subscriber::count();
+            $data['today_subscriber'] = Subscriber::query()->where('subscribe_date',date('Y-m-d'))->count();
             $data['page_title'] = 'Dashboard';
 
             return view('backend.dashboard', $data);

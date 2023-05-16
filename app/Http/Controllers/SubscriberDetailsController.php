@@ -60,7 +60,7 @@ class SubscriberDetailsController extends BaseController
             $data['page_url'] = 'subscriberList';
             $data['page_route'] = 'subscriberList';
 
-            $data['results'] = $this->model->getEventData($request);
+            $data['results'] = $this->model->getSubscriberList($request);
             $data['page_title'] = 'Subscriber List';
             $data['request'] = $request;
             $data['load_css'] = [
