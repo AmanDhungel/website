@@ -190,7 +190,7 @@ class MenusTableSeeder extends Seeder
             [
                 'parent_id' => 0,
                 'menu_name' => 'Contact Message  Details',
-                'menu_link' => 'contactMessageManagement',
+                'menu_link' => 'contactMessageList',
                 'menu_controller' => 'ContactMessageManagementController',
                 'menu_icon' => 'fa fa-envelope',
                 'menu_order' => 11,
@@ -201,7 +201,7 @@ class MenusTableSeeder extends Seeder
             [
                 'parent_id' => 0,
                 'menu_name' => 'Subscriber Details',
-                'menu_link' => 'subscriberDetails',
+                'menu_link' => 'subscriberList',
                 'menu_controller' => 'SubscriberDetailsController',
                 'menu_icon' => 'fa fa-info',
                 'menu_order' => 12,

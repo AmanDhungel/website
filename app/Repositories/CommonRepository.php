@@ -316,6 +316,52 @@ class CommonRepository
             ->paginate(10);
     }
 
+    public function getContactMessageList($request)
+    {
+        $result = $this->model;
+
+        if ($request->from_date != null && $request->to_date == null) {
+            $result = $result
+                ->where('message_date', '>=', $request->from_date);
+        }
+
+        if ($request->to_date != null && $request->from_date == null) {
+            $result = $result
+                ->where('message_date', '<=', $request->to_date);
+        }
+
+        if ($request->from_date != null && $request->to_date != null) {
+            $result = $result
+                ->whereBetween('message_date',[$request->from_date,$request->to_date]);
+        }
+
+        return $result->orderBy('id', 'desc')
+            ->paginate(10);
+    }
+
+    public function getSubscriberList($request)
+    {
+        $result = $this->model;
+
+        if ($request->from_date != null && $request->to_date == null) {
+            $result = $result
+                ->where('subscriber_date', '>=', $request->from_date);
+        }
+
+        if ($request->to_date != null && $request->from_date == null) {
+            $result = $result
+                ->where('subscriber_date', '<=', $request->to_date);
+        }
+
+        if ($request->from_date != null && $request->to_date != null) {
+            $result = $result
+                ->whereBetween('subscriber_date',[$request->from_date,$request->to_date]);
+        }
+
+        return $result->orderBy('id', 'desc')
+            ->paginate(10);
+    }
+
     public function getBlogData($request)
     {
         $result = $this->model;

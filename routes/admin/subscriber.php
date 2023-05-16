@@ -3,8 +3,8 @@
 use App\Http\Controllers\SubscriberDetailsController;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('/contactMessageManagement', SubscriberDetailsController::class)
+Route::resource('/subscriberList', SubscriberDetailsController::class)
     ->except(['create', 'edit', 'show']);
 
-Route::post('/contactMessageManagement/status/{id}', [SubscriberDetailsController::class, 'status']);
+Route::post('/subscriberList/status/{id}', [SubscriberDetailsController::class, 'status']);
 
