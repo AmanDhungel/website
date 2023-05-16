@@ -54,26 +54,3 @@ $request->district_ode !=null  || $request->local_body_code !=null || $request->
 
     @endif
 @endif
-
-@if(@$is_import ==true)
-    <button
-            class="btn btn-success btn-sm float-left  rounded-pill boxButton {{setFont()}}"
-            data-toggle="modal"
-            data-target="#importModal"
-            title="{{trans('message.button.import')}}"
-    >
-        <i class="fa fa-file-import"></i>
-        {{trans('message.button.import')}}
-    </button>
-@endif
-
-@if(@$is_export ==true)
-    <a href="{{url($page_url.'/exportData')}}"
-       class="btn btn-secondary btn-sm float-right rounded-pill  boxButton {{setFont()}}"
-       data-toggle="tooltip"
-       title="{{trans('message.button.export')}}"
-    >
-        <i class="fa fa-file-excel"></i>
-        {{trans('message.button.export')}}
-    </a>
-@endif

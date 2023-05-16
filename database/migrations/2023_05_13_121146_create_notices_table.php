@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->longText('descriptions')->nullable();
             $table->boolean('status')->default(true);
+            $table->boolean('is_highlight_notice')->default(false);
             $table->integer('order');
             $table->string('file');
             $table->date('published_date');

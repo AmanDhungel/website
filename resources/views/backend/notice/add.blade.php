@@ -38,28 +38,25 @@
                                     *
                                 </span>
                         </label>
-                        {!! Form::text('header_title',null,
+                        {!! Form::text('title',null,
                                 ['class'=>'form-control',
-                                'placeholder'=>'Enter Banner Title',
+                                'placeholder'=>'Enter Title',
                                 'autocomplete'=>'off',
                                 'required'
                                 ])
                         !!}
                     </div>
-
-
                     <div class="form-group col-md-12 {{setFont()}}">
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('description',null,
+                        {!! Form::textarea('descriptions',null,
                                 ['class'=>'form-control',
-                                'placeholder'=>'Enter Banner Description',
+                                'placeholder'=>'Enter Notice Details',
                                 'rows'=>'4',
                                 'autocomplete'=>'off'
                                 ])
                         !!}
-                        {!! $errors->first('details', '<span class="label label-danger">:message</span>') !!}
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">
@@ -76,21 +73,20 @@
                                 'min'=>'1'
                                 ])
                         !!}
-                        {!! $errors->first('name', '<small class="text text-danger">:message</small>') !!}
                     </div>
 
                     <div class="form-group col-md-6">
 
                         <label for="image">
-                            Banner Image
+                            File
                             <span class="text text-danger">
                                     *
                                 </span>
                         </label>
                         <input type="file"
                                class="form-control-file profile-img"
-                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"
-                               name="image"
+                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG, .pdf"
+                               name="file"
                                required
                         >
 
@@ -102,6 +98,28 @@
                             </span>
                         @endif
                     </div>
+                    <div class="form-group col-md-6 {{setFont()}}">
+                        <label>
+                            Is Highlight Notice ?
+                        </label>
+                        <br>
+                        <input class="radio-button"
+                               type="radio"
+                               name="is_highlight_notice"
+                               value="1"
+                               style="margin-top: 2px"
+                        >
+                        Yes
+                        &nbsp; &nbsp;
+                        <input class="radio-button"
+                               type="radio"
+                               checked
+                               name="is_highlight_notice"
+                               value="0" style="margin-top: 2px"
+                        >
+                        No
+                    </div>
+
 
                     @include('backend.components.commonAddStatus')
 

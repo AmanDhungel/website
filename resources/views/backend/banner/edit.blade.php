@@ -4,7 +4,7 @@
      data-keyboard="false"
      data-backdrop="static"
 >
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content modal-content-radius">
             <div class="modal-header btn-primary rounded-pill">
                 <h4 class="modal-title {{setFont()}}">
@@ -63,7 +63,7 @@
                         !!}
                         {!! $errors->first('details', '<span class="label label-danger">:message</span>') !!}
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="inputName">
                             Order
                             <span class="text text-danger">
@@ -110,7 +110,7 @@
                         </div>
                     @endif
 
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
 
                         <label for="image">
                             Banner Image

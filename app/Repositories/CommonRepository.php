@@ -256,4 +256,33 @@ class CommonRepository
 
         return $result->count();
     }
+    public function getNoticeData($request)
+    {
+        $result = $this->model;
+        if ($request->status != null) {
+            $result = $result->where('status', $request->status);
+        }
+        if ($request->title != null) {
+            $result = $result
+                ->where('title', 'LIKE', '%'.$request->name.'%');
+        }
+
+        if ($request->from_date != null && $request->to_date == null) {
+            $result = $result
+                ->where('published_date', '>=', $request->from_date);
+        }
+
+        if ($request->to_date != null && $request->from_date == null) {
+            $result = $result
+                ->where('published_date', '<=', $request->to_date);
+        }
+
+        if ($request->from_date != null && $request->to_date != null) {
+            $result = $result
+                ->whereBetween('published_date',[$request->from_date,$request->to_date]);
+        }
+
+        return $result->orderBy('id', 'desc')
+            ->paginate(10);
+    }
 }

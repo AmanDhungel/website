@@ -17,6 +17,7 @@ Route::group(['middleware' => ['auth']], function () {
     include_once 'admin/contactMessage.php';
     include_once 'admin/subscriber.php';
     include_once 'admin/systemSetting.php';
+    include_once 'admin/notice.php';
 
     Route::prefix('masterSettings')->group(function () {
         include_once 'masterSetting/cmsPage.php';
