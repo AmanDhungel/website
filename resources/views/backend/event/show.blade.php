@@ -7,7 +7,7 @@
         <div class="modal-content modal-content-radius">
             <div class="modal-header btn-secondary rounded-pill">
                 <h4 class="modal-title {{setFont()}}">
-                    {{  $data->title  }}    {{  'Notice' }} {{trans('message.pages.roles.details')}}
+                    {{  $data->title  }}    {{  'Event' }} {{trans('message.pages.roles.details')}}
                 </h4>
                 <button type="button" class="close"
                         data-dismiss="modal"

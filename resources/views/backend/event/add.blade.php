@@ -94,7 +94,20 @@
                             </span>
                         @endif
                     </div>
-
+                    <div class="form-group col-md-6">
+                        <label for="inputName">
+                            Event Date
+                            <span class="text text-danger">
+                                    *
+                                </span>
+                        </label>
+                        {!! Form::text('event_date',null,
+                                ['class'=>'form-control englishDatePicker eventDate',
+                                'autocomplete'=>'off',
+                                'required',
+                                ])
+                        !!}
+                    </div>
 
 
                     @include('backend.components.commonAddStatus')

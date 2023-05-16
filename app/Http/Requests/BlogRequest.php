@@ -13,7 +13,7 @@ class BlogRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class BlogRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required',
+            'order'=>'required',
+            'image'=>'nullable|mimes:jpeg,jpg,png|max:1048',
         ];
     }
 }

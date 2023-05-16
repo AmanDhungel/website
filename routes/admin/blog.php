@@ -3,8 +3,10 @@
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('/blogs', BlogController::class)
+Route::resource('/blogManagement', BlogController::class)
     ->except(['create', 'edit', 'show']);
 
-Route::post('/blogs/status/{id}', [BlogController::class, 'status']);
+Route::post('/blogManagement/status/{id}', [BlogController::class, 'status']);
+
+Route::post('/blogManagement/order/{id}', [BlogController::class, 'order']);
 
