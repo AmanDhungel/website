@@ -222,7 +222,7 @@ class MenusTableSeeder extends Seeder
             ],
             [
                 'parent_id' => 0,
-                'menu_name' => 'Notice Manager',
+                'menu_name' => 'Event Manager',
                 'menu_link' => 'eventManagement',
                 'menu_controller' => 'EventController',
                 'menu_icon' => 'fa fa-calendar',

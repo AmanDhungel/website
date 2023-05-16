@@ -5,7 +5,7 @@
     <title class="{{setFont()}}">
         @if( isset($page_title)) {{@$page_title}}@else @if(isset(systemSetting()->app_name)){{systemSetting()->app_name}} @else {{ env('APP_NAME') }}  @endif  @endif
     </title>
-    <link rel="shortcut icon" href="{{ asset('images/logo.jpg') }}">
+    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,7 +25,6 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/theme_switch.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/flag-icon-css/css/flag-icon.min.css')}}">
 
     @if(@$load_css)

@@ -3,17 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
     use SoftDeletes;
+    const EVENT_PATH = 'uploads/events';
 
     protected $fillable =
         [
             'title',
             'descriptions',
-            'image',
+            'file',
             'order',
             'event_date',
             'created_by',
@@ -21,4 +23,12 @@ class Event extends Model
             'deleted_by',
             'status',
         ];
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }

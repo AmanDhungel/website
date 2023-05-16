@@ -26,12 +26,12 @@
                 !!}
                 <div class="row {{setFont()}}">
                     <div class="form-group col-md-6">
-                        {!!Form::text('name',
-                            Request::get('name'),
+                        {!!Form::text('title',
+                            Request::get('title'),
                             ['class'=>'form-control',
                             'autocomplete'=>'off',
                             'width'=>'100%',
-                            'placeholder'=>trans('message.pages.roles.name')])
+                            'placeholder'=>'Title'])
                             !!}
                     </div>
                     <div class="form-group col-md-6">

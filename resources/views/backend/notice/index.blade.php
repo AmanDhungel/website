@@ -72,7 +72,17 @@
                                     <i class="fas fa-filter"></i>
                                     {{ trans('message.button.filter') }}
                                 </button>
+                                @if( $request->title !=null || $request->status !=null || $request->from_date !=null || $request->to_date !=null)
 
+                                    <a href="{{url(@$page_url)}}"
+                                       class="btn btn-secondary btn-sm float-right boxButton rounded-pill {{setFont()}}"
+                                       title="{{ trans('message.button.reload') }}"
+                                    >
+                                        <i class="fas  fa-undo"></i>
+                                        {{ trans('message.button.reload') }}
+                                    </a>
+
+                                @endif
                             </div>
                             <!-- /.card-header -->
                             <div class="card">
@@ -189,7 +199,7 @@
         <!-- /.content -->
         @include('backend.notice.add')
         @include('backend.modal.technical-error-modal')
-        @include('backend.notice.searchModal')
+        @include('backend.modal.searchModal')
     </div>
 
     <!-- /.content-wrapper -->

@@ -30,7 +30,6 @@
     <!-- Toastr -->
     <script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
     <script src={{asset("plugins/bootstrap-toggle/js/bootstrap-toggle.js")}}></script>
-    <script src={{asset("js/theme_switch.min.js")}}></script>
     <script src={{asset("js/common.min.js")}}></script>
 
 

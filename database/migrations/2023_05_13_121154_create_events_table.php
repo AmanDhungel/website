@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('descriptions')->nullable();
             $table->boolean('status')->default(true);
             $table->integer('order');
-            $table->string('image');
+            $table->string('file')->nullable();
             $table->date('event_date');
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');

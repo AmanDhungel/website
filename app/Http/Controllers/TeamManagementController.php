@@ -81,9 +81,6 @@ class TeamManagementController extends BaseController
                 'js/custom_app.min.js',
                 'js/check_data.min.js',
                 'js/image_validation.min.js',
-                'js/role.min.js',
-                'js/dataSubmit.js',
-                'js/user.min.js',
 
             ];
 
