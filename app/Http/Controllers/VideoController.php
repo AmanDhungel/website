@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Helpers\FileUploadLibraryHelper;
 use App\Http\Controllers\BaseController;
-use App\Http\Requests\GalleryRequest;
 use App\Http\Requests\TeamRequest;
-use App\Models\Gallery;
 use App\Models\MasterSettings\Designation;
 use App\Models\StaffMember;
+use App\Models\Video;
 use App\Repositories\CommonRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,10 +15,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 
-class GalleryController extends BaseController
+class VideoController extends BaseController
 {
     protected CommonRepository $model;
-    public function __construct(Gallery $model
+    public function __construct(Video $model
     ) {
         parent::__construct();
         // set the model
@@ -38,9 +37,6 @@ class GalleryController extends BaseController
             $value = $this->model->find($id);
             DB::beginTransaction();
             if($value){
-                if ($value->image != null) {
-                    FileUploadLibraryHelper::deleteExistingFile($value->image, Gallery::GALLERY_PATH);
-                }
                 $this->model->delete($id);
                 DB::commit();
             }
@@ -63,15 +59,13 @@ class GalleryController extends BaseController
     public function index(Request $request)
     {
         try {
-            $data['page_url'] = 'galleryManagement';
-            $data['page_route'] = 'galleryManagement';
+            $data['page_url'] = 'videoManagement';
+            $data['page_route'] = 'videoManagement';
 
             $data['results'] = $this->model->getData($request);
-            $data['designations'] = Designation::orderBy('name','ASC')->get();
-            $data['page_title'] = 'Gallery Management';
+            $data['page_title'] = 'Video Management';
             $data['request'] = $request;
             $data['show_button'] = true;
-            $data['filePath'] = Gallery::GALLERY_PATH;
             $data['load_css'] = [
                 'plugins/select2/css/select2.css',
 
@@ -84,7 +78,7 @@ class GalleryController extends BaseController
 
             ];
 
-            return view('backend.gallery.index', $data);
+            return view('backend.video.index', $data);
         } catch (\Exception $e) {
             Session::flash('server_error', Lang::get('message.commons.technicalError'));
 
@@ -98,25 +92,16 @@ class GalleryController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GalleryRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         try {
             $data = $request->all();
-            if (! empty($request->file('image'))) {
-                $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->title);
-                $imageSuccess = true;
-            }
             $data['created_by'] = userInfo()->id;
 
             DB::beginTransaction();
 
-            $create = $this->model->create($data);
+            $this->model->create($data);
             DB::commit();
-            if($create){
-                if (isset($imageSuccess)) {
-                    FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], Gallery::GALLERY_PATH);
-                }
-            }
             session()->flash('success', Lang::get('message.flash_messages.insertMessage'));
 
             return back();
@@ -182,7 +167,7 @@ class GalleryController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(GalleryRequest $request, int $id): RedirectResponse
+    public function update(Request $request, int $id): RedirectResponse
     {
         try {
             DB::beginTransaction();
@@ -190,24 +175,14 @@ class GalleryController extends BaseController
             if($value){
 
                 $data = $request->all();
-                if (! empty($request->file('image'))) {
-                    $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->title);
-                    $imageSuccess = true;
-                }
                 $data['updated_by'] = userInfo()->id;
-                $update = $this->model->update($data, $id);
-                if($update){
-                    if (isset($imageSuccess)) {
-                        FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], Gallery::GALLERY_PATH);
-                    }
-                }
+                $this->model->update($data, $id);
                 DB::commit();
             }
             session()->flash('success', Lang::get('message.flash_messages.updateMessage'));
 
             return back();
         } catch (\Exception $e) {
-            dd($e);
             DB::rollback();
             Session::flash('server_error', Lang::get('message.commons.technicalError'));
 

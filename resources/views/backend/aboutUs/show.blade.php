@@ -7,7 +7,7 @@
         <div class="modal-content modal-content-radius">
             <div class="modal-header btn-secondary rounded-pill">
                 <h4 class="modal-title {{setFont()}}">
-                    {{  $data->title  }}    {{  'Gallery' }} {{trans('message.pages.roles.details')}}
+                       {{  'About' }} {{trans('message.pages.roles.details')}}
                 </h4>
                 <button type="button" class="close"
                         data-dismiss="modal"
@@ -18,16 +18,13 @@
             <div class="modal-body">
 
                 <div class="row">
+
                     <div class="form-group col-md-12 {{setFont()}}">
                         <label for="">
-                            Title
+                            Description
                         </label>
-                        @if(isset($data->title))
-                            <input type="text"
-                                   class="form-control"
-                                   value="{{  $data->title  }}"
-                                   readonly
-                            >
+                        @if(isset($data->description))
+                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->description}}</textarea>
                         @else
                             <input type="text"
                                    class="form-control"
@@ -35,38 +32,6 @@
                             >
 
                         @endif
-                    </div>
-                    <div class="form-group col-md-4 {{setFont()}}">
-                        <label for="">
-                            Order
-                        </label>
-                        @if(isset($data->order))
-                            <input type="text"
-                                   class="form-control"
-                                   value="{{  $data->order  }}"
-                                   readonly
-                            >
-                        @else
-                            <input type="text"
-                                   class="form-control"
-                                   value="" readonly
-                            >
-
-                        @endif
-                    </div>
-
-
-
-
-                    <div class="form-group col-md-4 {{setFont()}}">
-                        <label for="">
-                            {{trans('message.commons.status')}}
-                        </label>
-                        <input type="text"
-                               class="form-control"
-                               value="{{ $data->status == 1 ? trans('message.button.active') : trans('message.button.inactive') }}"
-                               readonly
-                        >
                     </div>
                     @if($data->image !=null)
                         <div class="form-group col-md-4 {{setFont()}}">

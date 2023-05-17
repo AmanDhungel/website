@@ -77,10 +77,6 @@
                                                 {{ trans('message.commons.status') }}
                                             </th>
 
-                                            <th>
-                                                {{ trans('message.pages.users_management.block_status') }}
-                                            </th>
-
                                             <th style="width: 100px;"
                                             >
                                                 {{ trans('message.commons.action') }}
@@ -112,27 +108,7 @@
                                                     @endif
                                                 </td>
 
-                                                <td class="{{setFont()}}">
-                                                    @if($data->id != \Illuminate\Support\Facades\Auth::user()->id)
 
-                                                        @if($data->block_status == true)
-                                                            <button type="button"
-                                                                    class="btn btn-danger btn-xs rounded-pill"
-                                                                    data-toggle="modal"
-                                                                    data-target="#blockStatusModal{{$key}}"
-                                                                    title="Click here update  status"
-                                                            >
-                                                                {{trans('message.button.yes')}}
-                                                            </button>
-
-                                                        @elseif($data->block_status== false)
-
-                                                            <strong class="btn btn-secondary btn-xs rounded-pill">
-                                                                {{trans('message.button.no')}}
-                                                            </strong>
-                                                        @endif
-                                                    @endif
-                                                </td>
                                                 <td>
                                                     @if(userInfo()->role_id == 1 || userInfo()->role_id == 2)
                                                         <button type="button"

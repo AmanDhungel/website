@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\FileUploadLibraryHelper;
 use App\Http\Controllers\BaseController;
-use App\Http\Requests\GalleryRequest;
 use App\Http\Requests\TeamRequest;
-use App\Models\Gallery;
+use App\Models\ExecutiveCommittee;
 use App\Models\MasterSettings\Designation;
 use App\Models\StaffMember;
 use App\Repositories\CommonRepository;
@@ -16,10 +15,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 
-class GalleryController extends BaseController
+class ExecutiveCommitteeController extends BaseController
 {
     protected CommonRepository $model;
-    public function __construct(Gallery $model
+
+    private int $fileHeight = 600;
+
+    private int $fileWidth = 600;
+    public function __construct(ExecutiveCommittee $model
     ) {
         parent::__construct();
         // set the model
@@ -39,7 +42,7 @@ class GalleryController extends BaseController
             DB::beginTransaction();
             if($value){
                 if ($value->image != null) {
-                    FileUploadLibraryHelper::deleteExistingFile($value->image, Gallery::GALLERY_PATH);
+                    FileUploadLibraryHelper::deleteExistingFile($value->image, ExecutiveCommittee::EXECUTIVE_PATH);
                 }
                 $this->model->delete($id);
                 DB::commit();
@@ -63,15 +66,15 @@ class GalleryController extends BaseController
     public function index(Request $request)
     {
         try {
-            $data['page_url'] = 'galleryManagement';
-            $data['page_route'] = 'galleryManagement';
+            $data['page_url'] = 'executiveCommittee';
+            $data['page_route'] = 'executiveCommittee';
 
             $data['results'] = $this->model->getData($request);
             $data['designations'] = Designation::orderBy('name','ASC')->get();
-            $data['page_title'] = 'Gallery Management';
+            $data['page_title'] = 'Executive Committee';
             $data['request'] = $request;
             $data['show_button'] = true;
-            $data['filePath'] = Gallery::GALLERY_PATH;
+            $data['filePath'] = ExecutiveCommittee::EXECUTIVE_PATH;
             $data['load_css'] = [
                 'plugins/select2/css/select2.css',
 
@@ -84,7 +87,7 @@ class GalleryController extends BaseController
 
             ];
 
-            return view('backend.gallery.index', $data);
+            return view('backend.team.index', $data);
         } catch (\Exception $e) {
             Session::flash('server_error', Lang::get('message.commons.technicalError'));
 
@@ -98,12 +101,12 @@ class GalleryController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GalleryRequest $request): RedirectResponse
+    public function store(TeamRequest $request): RedirectResponse
     {
         try {
             $data = $request->all();
             if (! empty($request->file('image'))) {
-                $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->title);
+                $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->full_name);
                 $imageSuccess = true;
             }
             $data['created_by'] = userInfo()->id;
@@ -114,7 +117,7 @@ class GalleryController extends BaseController
             DB::commit();
             if($create){
                 if (isset($imageSuccess)) {
-                    FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], Gallery::GALLERY_PATH);
+                    FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], ExecutiveCommittee::EXECUTIVE_PATH,$this->fileWidth,$this->fileHeight);
                 }
             }
             session()->flash('success', Lang::get('message.flash_messages.insertMessage'));
@@ -182,7 +185,7 @@ class GalleryController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(GalleryRequest $request, int $id): RedirectResponse
+    public function update(TeamRequest $request, int $id): RedirectResponse
     {
         try {
             DB::beginTransaction();
@@ -191,14 +194,14 @@ class GalleryController extends BaseController
 
                 $data = $request->all();
                 if (! empty($request->file('image'))) {
-                    $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->title);
+                    $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->full_name);
                     $imageSuccess = true;
                 }
                 $data['updated_by'] = userInfo()->id;
                 $update = $this->model->update($data, $id);
                 if($update){
                     if (isset($imageSuccess)) {
-                        FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], Gallery::GALLERY_PATH);
+                        FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], ExecutiveCommittee::EXECUTIVE_PATH,$this->fileWidth,$this->fileHeight);
                     }
                 }
                 DB::commit();
@@ -207,7 +210,6 @@ class GalleryController extends BaseController
 
             return back();
         } catch (\Exception $e) {
-            dd($e);
             DB::rollback();
             Session::flash('server_error', Lang::get('message.commons.technicalError'));
 

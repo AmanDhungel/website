@@ -22,6 +22,10 @@ Route::group(['middleware' => ['auth']], function () {
     include_once 'admin/blog.php';
     include_once 'admin/subscriber.php';
     include_once 'admin/contactMessage.php';
+    include_once 'admin/staffMember.php';
+    include_once 'admin/executiveCommittee.php';
+    include_once 'admin/gallery.php';
+    include_once 'admin/video.php';
 
     Route::prefix('masterSettings')->group(function () {
         include_once 'masterSetting/cmsPage.php';

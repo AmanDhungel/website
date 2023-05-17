@@ -48,6 +48,18 @@
                                 ])
                         !!}
                     </div>
+                    <div class="form-group col-md-12 {{setFont()}}">
+                        <label for="inputDescription">
+                            {{trans('message.pages.roles.details')}}
+                        </label>
+                        {!! Form::textarea('video_link',null,
+                                ['class'=>'form-control',
+                                'placeholder'=>'Enter  Video Link',
+                                'rows'=>'4',
+                                'autocomplete'=>'off'
+                                ])
+                        !!}
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">
                             Order
@@ -63,56 +75,6 @@
                                 'min'=>'1'
                                 ])
                         !!}
-                    </div>
-
-                    @if($data->image !=null)
-                        <div class="form-group col-md-4 {{setFont()}}">
-                            <label for="">
-                                Uploaded File
-                            </label>
-                            <br>
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->image)}}"
-                               target="_blank"
-                               class="btn btn-secondary btn-xs rounded-pill"
-                               data-placement="top" title="{{trans('message.pages.common.viewFile')}}"
-                               style="margin: 10px 0 0 10px;"
-                            >
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            &nbsp;
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
-                               target="_blank"
-                               class="btn btn-danger btn-xs rounded-pill"
-                               data-placement="top" title="Download Image"
-                               style="margin: 10px 0 0 10px;"
-                               download=""
-                            >
-                                <i class="fa fa-download"></i>
-                            </a>
-
-                        </div>
-                    @endif
-
-                    <div class="form-group col-md-6">
-
-                        <label for="image">
-                            Image
-                        </label>
-                        <input type="file"
-                               class="form-control-file profile-img"
-                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"
-                               name="image"
-                        >
-
-                        @if($errors->has('image') == null)
-                            <span class="text text-danger"
-                                  style="font-size: 14px;color: #ff042c"
-                            >
-                              {{trans('message.pages.users_management.file_upload_message')}}
-                            </span>
-                        @endif
                     </div>
 
                     @include('backend.components.commonEditStatus')

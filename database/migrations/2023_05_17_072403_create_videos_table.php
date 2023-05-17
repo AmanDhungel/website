@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cms_pages', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('parent_id')->default(0);
-            $table->string('page_name')->nullable();
-            $table->string('page_code')->nullable();
-            $table->boolean('status')->default(true);
-            $table->boolean('is_header_menu')->default(false);
-            $table->boolean('page_link')->default(false);
+            $table->string('title')->nullable();
+            $table->longText('video_link')->nullable();
+            $table->longText('descriptions')->nullable();
             $table->integer('order');
+            $table->boolean('status')->default(true);
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
             $table->bigInteger('updated_by')->unsigned()->nullable();
@@ -40,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cms_pages');
+        Schema::dropIfExists('videos');
     }
 };

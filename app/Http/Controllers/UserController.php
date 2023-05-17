@@ -93,7 +93,7 @@ class UserController extends BaseController
             $data['page_url'] = 'users';
             $data['page_route'] = 'users';
             $data['load_css'] = [
-                'plugins/select2/css/select2.min.css',
+                'plugins/select2/css/select2.css',
 
             ];
             $data['load_js'] = [

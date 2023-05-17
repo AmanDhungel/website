@@ -65,26 +65,6 @@
                                     <i class="fa fa-plus-circle"></i>
                                     {{trans('message.button.add_new')}}
                                 </button>
-                                <button class="btn btn-info btn-sm float-right rounded-pill {{setFont()}}"
-                                        data-toggle="modal"
-                                        data-target="#searchModal"
-                                        title="{{ trans('message.button.filter') }}">
-                                    <i class="fas fa-filter"></i>
-                                    {{ trans('message.button.filter') }}
-                                </button>
-
-                                @if( $request->title !=null || $request->status !=null || $request->from_date !=null || $request->to_date !=null)
-
-                                    <a href="{{url(@$page_url)}}"
-                                       class="btn btn-secondary btn-sm float-right boxButton rounded-pill {{setFont()}}"
-                                       title="{{ trans('message.button.reload') }}"
-                                    >
-                                        <i class="fas  fa-undo"></i>
-                                        {{ trans('message.button.reload') }}
-                                    </a>
-
-                                @endif
-
 
                             </div>
                             <!-- /.card-header -->
@@ -101,19 +81,19 @@
                                                 </th>
 
                                                 <th>
-                                                    Title
+                                                   Title
+                                                </th>
+
+                                                <th>
+                                                    Video Link
                                                 </th>
                                                 <th>
                                                     Order
-                                                </th>
-                                                <th>
-                                                    Image
                                                 </th>
 
                                                 <th width="10%">
                                                     {{trans('message.commons.status')}}
                                                 </th>
-
 
                                                 <th width="13%">
                                                     {{trans('message.commons.action')}}
@@ -126,9 +106,15 @@
                                                     <th scope="row {{setFont()}}">
                                                         {{ ($results->currentpage()-1) * $results->perpage() + $key+1 }}
                                                     </th>
+
                                                     <td>
                                                         @if(isset($data->title))
                                                             {{$data->title}}
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if(isset($data->video_link))
+                                                            {{$data->video_link}}
                                                         @endif
                                                     </td>
 
@@ -147,9 +133,7 @@
                                                             Update
                                                         </button>
                                                     </td>
-                                                    <td>
-                                                        @include('backend.components.commonImageLoad')
-                                                    </td>
+
                                                     <td class="{{setFont()}}">
                                                         @include('backend.components.buttons.status')
                                                     </td>
@@ -160,8 +144,8 @@
                                                 </tr>
                                                 @include('backend.modal.status_modal')
                                                 @include('backend.modal.delete_modal')
-                                                @include('backend.gallery.edit')
-                                                @include('backend.gallery.show')
+                                                @include('backend.video.edit')
+                                                @include('backend.video.show')
                                                 @include('backend.components.orderUpdateModal')
                                             @endforeach
                                             </tbody>
@@ -195,9 +179,8 @@
         </section>
         <!-- /.container-fluid -->
         <!-- /.content -->
-        @include('backend.gallery.add')
+        @include('backend.video.add')
         @include('backend.modal.technical-error-modal')
-        @include('backend.modal.searchModal')
     </div>
 
     <!-- /.content-wrapper -->

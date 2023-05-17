@@ -13,9 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('portfolio_types', function (Blueprint $table) {
+        Schema::create('staff_members', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('full_name')->nullable();
+            $table->integer('designation_id')->nullable();
+            $table->string('address')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->string('contact_email')->nullable();
+            $table->string('facebook_link')->nullable();
+            $table->boolean('facebook_link_status')->default(true);
+            $table->string('twitter_link')->nullable();
+            $table->boolean('twitter_link_status')->default(true);
+            $table->string('insta_link')->nullable();
+            $table->boolean('insta_link_status')->default(true);
+            $table->string('linkedin_link')->nullable();
+            $table->boolean('linkedin_link_status')->default(true);
+            $table->string('image')->nullable();
+            $table->integer('order')->nullable();
             $table->boolean('status')->default(true);
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
@@ -35,6 +49,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portfolio_types');
+        Schema::dropIfExists('staff_members');
     }
 };

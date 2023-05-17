@@ -23,6 +23,7 @@ class CmsPage extends Model
             'status',
             'is_header_menu',
             'parent_id',
+            'page_link',
         ];
 
     public function children(): HasMany

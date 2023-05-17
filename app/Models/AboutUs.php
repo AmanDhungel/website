@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AboutUs extends Model
 {
     use SoftDeletes;
+    const ABOUT_PATH = 'uploads/about';
 
     protected $fillable =
         [

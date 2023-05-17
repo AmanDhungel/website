@@ -46,6 +46,18 @@
                                 ])
                         !!}
                     </div>
+                    <div class="form-group col-md-12 {{setFont()}}">
+                        <label for="inputDescription">
+                           Video Link
+                        </label>
+                        {!! Form::textarea('video_link',null,
+                                ['class'=>'form-control',
+                                'placeholder'=>'Enter  Video Link',
+                                'rows'=>'3',
+                                'autocomplete'=>'off'
+                                ])
+                        !!}
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">
                             Order
@@ -63,25 +75,6 @@
                         !!}
                     </div>
 
-                    <div class="form-group col-md-6">
-
-                        <label for="image">
-                            File
-                        </label>
-                        <input type="file"
-                               class="form-control-file profile-img"
-                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"
-                               name="image"
-                        >
-
-                        @if($errors->has('image') == null)
-                            <span class="text text-danger"
-                                  style="font-size: 14px;color: #ff042c"
-                            >
-                              {{trans('message.pages.users_management.file_upload_message')}}
-                            </span>
-                        @endif
-                    </div>
 
 
 

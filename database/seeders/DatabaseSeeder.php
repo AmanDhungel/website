@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CmsPageTableSeeder::class);
         $this->call(DesignationTableSeeder::class);
         $this->call(BlogTypeTableSeeder::class);
+        $this->call(AboutUsTableSeeder::class);
     }
 }

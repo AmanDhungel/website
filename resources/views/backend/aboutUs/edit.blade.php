@@ -34,33 +34,19 @@
                 !!}
                 <div class="row">
                     <div class="form-group col-md-12 {{setFont()}}">
-                        <label for="inputName">
-                            {{trans('Title')}}
-                            <span class="text text-danger">
+
+                        <label for="inputDescription">
+                            {{trans('message.pages.roles.details')}}
+                        </label>
+                        <span class="text text-danger">
                                     *
                                 </span>
-                        </label>
-                        {!! Form::text('title',null,
+                        {!! Form::textarea('description',null,
                                 ['class'=>'form-control',
-                                'placeholder'=>'Enter Title',
-                                'autocomplete'=>'off',
-                                'required'
-                                ])
-                        !!}
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputName">
-                            Order
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::number('order',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Order',
-                                'autocomplete'=>'off',
+                                'placeholder'=>'Enter  Details',
+                                'rows'=>'4',
                                 'required',
-                                'min'=>'1'
+                                'autocomplete'=>'off'
                                 ])
                         !!}
                     </div>
