@@ -1,3 +1,4 @@
+<body>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -31,10 +32,10 @@
         </nav><!-- .navbar -->
 
         <div class="header-social-links d-flex">
-            <a href="#" class="twitter"><i class="bu bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bu bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bu bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+            <a href="{{ systemSetting()->office_twitter_link }}" class="twitter"><i class="bu bi-twitter"></i></a>
+            <a href="{{systemSetting()->office_facebook_link}}" class="facebook"><i class="bu bi-facebook"></i></a>
+            <a href="{{systemSetting()->office_youtube_link}}" class="youtube"><i class="bu bi-youtube"></i></a>
+            <a href="{{systemSetting()->office_linked_in_link}}" class="linkedin"><i class="bu bi-linkedin"></i></a>
         </div>
 
     </div>

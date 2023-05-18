@@ -22,6 +22,9 @@ class AppSettingTableSeeder extends Seeder
                 'login_attempt_limit' => '5',
                 'login_title' => 'Sign In to start your session',
                 'session_expire_time' => 60,
+                'office_address' => 'Bheri Na. Pa -4, Jajarkot',
+                'office_phone' => '089-430089',
+                'office_email_address' => 'hrdcjajarkot@gmail.com',
             ],
         ];
         DB::table('app_settings')->insert($rows);

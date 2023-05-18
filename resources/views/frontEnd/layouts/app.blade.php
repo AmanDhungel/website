@@ -4,10 +4,8 @@
 @include('frontEnd.layouts.header')
 
 <body>
-<main id="main">
 
     @yield('content')
-</main>
 </body>
 
 @include('frontEnd.layouts.footer')
