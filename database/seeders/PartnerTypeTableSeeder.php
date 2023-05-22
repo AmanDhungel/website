@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AboutUsTableSeeder extends Seeder
+class PartnerTypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +16,19 @@ class AboutUsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('about_us')->truncate();
+        DB::table('partner_types')->truncate();
         $rows = [
             [
-                'description' => 'About Us',
+                'name' => 'Current Partners',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]
+            ],
+            [
+                'name' => 'Past Partners',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ];
-        DB::table('about_us')->insert($rows);
+        DB::table('partner_types')->insert($rows);
     }
 }

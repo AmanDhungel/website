@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('publications', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('type_id')->unsigned()->nullable();
+            $table->foreign('type_id')->references('id')->on('publication_types')->onUpdate('cascade');
             $table->string('title')->nullable();
-            $table->longText('descriptions')->nullable();
+            $table->longText('description')->nullable();
+            $table->date('created_date')->nullable();
+            $table->string('publication_file')->nullable();
             $table->boolean('status')->default(true);
-            $table->integer('order');
-            $table->string('file')->nullable();
-            $table->date('event_date');
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
             $table->bigInteger('updated_by')->unsigned()->nullable();
@@ -39,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('publications');
     }
 };

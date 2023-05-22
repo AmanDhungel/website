@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cms_pages', function (Blueprint $table) {
+        Schema::create('partners', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('parent_id')->default(0);
-            $table->string('page_name')->nullable();
-            $table->string('page_code')->nullable();
+            $table->bigInteger('type_id')->unsigned()->nullable();
+            $table->foreign('type_id')->references('id')->on('partner_types')->onUpdate('cascade');
+            $table->string('name')->nullable();
+            $table->date('created_date')->nullable();
+            $table->string('icon_image')->nullable();
             $table->boolean('status')->default(true);
-            $table->boolean('is_header_menu')->default(false);
-            $table->boolean('page_link')->default(false);
-            $table->integer('order');
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
             $table->bigInteger('updated_by')->unsigned()->nullable();
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cms_pages');
+        Schema::dropIfExists('partners');
     }
 };

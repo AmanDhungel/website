@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blog_types', function (Blueprint $table) {
+        Schema::create('program_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->boolean('status')->default(true);
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_types');
+        Schema::dropIfExists('program_types');
     }
 };

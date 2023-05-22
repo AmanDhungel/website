@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news_letters', function (Blueprint $table) {
+        Schema::create('announcement_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->nullable();
-            $table->string('details')->nullable();
-            $table->string('image')->nullable();
-            $table->integer('order')->nullable();
+            $table->string('name')->nullable();
             $table->boolean('status')->default(true);
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
@@ -38,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_letters');
+        Schema::dropIfExists('announcement_types');
     }
 };

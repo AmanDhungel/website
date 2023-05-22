@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notices', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title')->nullable();
-            $table->longText('descriptions')->nullable();
+            $table->longText('page_content')->nullable();
+            $table->string('page_url')->nullable();
+            $table->date('created_date')->nullable();
             $table->boolean('status')->default(true);
-            $table->boolean('is_highlight_notice')->default(false);
-            $table->integer('order');
-            $table->string('file');
-            $table->date('published_date');
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
             $table->bigInteger('updated_by')->unsigned()->nullable();
@@ -40,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notices');
+        Schema::dropIfExists('pages');
     }
 };

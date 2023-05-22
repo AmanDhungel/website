@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('about_us', function (Blueprint $table) {
+        Schema::create('popups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('header_title')->nullable();
-            $table->string('main_title')->nullable();
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
+            $table->string('title')->nullable();
+            $table->string('content')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->boolean('status')->default(true);
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('about_us');
+        Schema::dropIfExists('popups');
     }
 };
