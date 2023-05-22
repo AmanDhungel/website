@@ -41,8 +41,8 @@
                         <label for="">
                              Description
                         </label>
-                        @if(isset($data->descriptions))
-                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->descriptions}}</textarea>
+                        @if(isset($data->content))
+                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->content}}</textarea>
                         @else
                             <input type="text"
                                    class="form-control"
@@ -53,12 +53,31 @@
                     </div>
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">
-                            Order
+                            Start Date
                         </label>
-                        @if(isset($data->order))
+                        @if(isset($data->start_date))
                             <input type="text"
                                    class="form-control"
-                                   value="{{  $data->order  }}"
+                                   value="{{  $data->start_date  }}"
+                                   readonly
+                            >
+                        @else
+                            <input type="text"
+                                   class="form-control"
+                                   value="" readonly
+                            >
+
+                        @endif
+                    </div>
+
+                    <div class="form-group col-md-4 {{setFont()}}">
+                        <label for="">
+                            End Date
+                        </label>
+                        @if(isset($data->end_date))
+                            <input type="text"
+                                   class="form-control"
+                                   value="{{  $data->end_date  }}"
                                    readonly
                             >
                         @else

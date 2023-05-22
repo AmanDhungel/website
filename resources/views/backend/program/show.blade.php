@@ -41,8 +41,8 @@
                         <label for="">
                             Description
                         </label>
-                        @if(isset($data->descriptions))
-                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->descriptions}}</textarea>
+                        @if(isset($data->description))
+                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->description}}</textarea>
                         @else
                             <input type="text"
                                    class="form-control"
@@ -53,12 +53,12 @@
                     </div>
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">
-                            Order
+                            Start Date
                         </label>
-                        @if(isset($data->order))
+                        @if(isset($data->start_date))
                             <input type="text"
                                    class="form-control"
-                                   value="{{  $data->order  }}"
+                                   value="{{  $data->start_date  }}"
                                    readonly
                             >
                         @else
@@ -72,12 +72,12 @@
 
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">
-                            Event Date
+                            End Date
                         </label>
-                        @if(isset($data->event_date))
+                        @if(isset($data->end_date))
                             <input type="text"
                                    class="form-control"
-                                   value="{{  $data->event_date  }}"
+                                   value="{{  $data->end_date  }}"
                                    readonly
                             >
                         @else
@@ -102,14 +102,14 @@
                                readonly
                         >
                     </div>
-                    @if($data->file !=null)
+                    @if($data->image !=null)
                         <div class="form-group col-md-4 {{setFont()}}">
                             <label for="">
-                                Uploaded File
+                                Uploaded Image
                             </label>
                             <br>
 
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
+                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->image)}}"
                                target="_blank"
                                class="btn btn-secondary btn-xs rounded-pill"
                                data-placement="top" title="{{trans('message.pages.common.viewFile')}}"
@@ -119,7 +119,7 @@
                             </a>
                             &nbsp;
 
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
+                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->image)}}"
                                target="_blank"
                                class="btn btn-danger btn-xs rounded-pill"
                                data-placement="top" title="Download Image"
@@ -131,7 +131,6 @@
 
                         </div>
                     @endif
-
                     @include('backend.components.actionBy.createdBy')
                     @include('backend.components.actionBy.updatedBy')
 

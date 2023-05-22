@@ -100,16 +100,15 @@
                                                     {{trans('message.commons.s_n')}}
                                                 </th>
 
-
-                                                <th>
-                                                    Event Date
-                                                </th>
-
                                                 <th>
                                                     Title
                                                 </th>
                                                 <th>
-                                                    Order
+                                                    Start Date
+                                                </th>
+
+                                                <th>
+                                                    End Date
                                                 </th>
 
                                                 <th width="10%">
@@ -127,12 +126,6 @@
                                                     <th scope="row {{setFont()}}">
                                                         {{ ($results->currentpage()-1) * $results->perpage() + $key+1 }}
                                                     </th>
-
-                                                    <td>
-                                                        @if(isset($data->event_date))
-                                                            {{$data->event_date}}
-                                                        @endif
-                                                    </td>
                                                     <td>
                                                         @if(isset($data->title))
                                                             {{$data->title}}
@@ -140,20 +133,16 @@
                                                     </td>
 
                                                     <td>
-                                                        @if(isset($data->order))
-                                                            {{$data->order}}
+                                                        @if(isset($data->start_date))
+                                                            {{$data->start_date}}
                                                         @endif
-                                                        &nbsp;
-                                                        <button type="button"
-                                                                class="btn btn-success btn-xs rounded-pill {{setFont()}}"
-                                                                data-toggle="modal"
-                                                                data-target="#orderModal{{$key}}"
-                                                                data-placement="top"
-                                                                title="Update Order"
-                                                        >
-                                                            Update
-                                                        </button>
                                                     </td>
+                                                    <td>
+                                                        @if(isset($data->end_date))
+                                                            {{$data->end_date}}
+                                                        @endif
+                                                    </td>
+
 
                                                     <td class="{{setFont()}}">
                                                         @include('backend.components.buttons.status')
@@ -165,8 +154,8 @@
                                                 </tr>
                                                 @include('backend.modal.status_modal')
                                                 @include('backend.modal.delete_modal')
-                                                @include('backend.event.edit')
-                                                @include('backend.event.show')
+                                                @include('backend.program.edit')
+                                                @include('backend.program.show')
                                                 @include('backend.components.orderUpdateModal')
                                             @endforeach
                                             </tbody>
@@ -200,7 +189,7 @@
         </section>
         <!-- /.container-fluid -->
         <!-- /.content -->
-        @include('backend.event.add')
+        @include('backend.program.add')
         @include('backend.modal.technical-error-modal')
         @include('backend.modal.searchModal')
     </div>

@@ -50,7 +50,7 @@
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('descriptions',null,
+                        {!! Form::textarea('description',null,
                                 ['class'=>'form-control',
                                 'placeholder'=>'Enter  Details',
                                 'rows'=>'4',
@@ -60,17 +60,30 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">
-                            Order
+                            Start Date
                             <span class="text text-danger">
                                     *
                                 </span>
                         </label>
-                        {!! Form::number('order',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Order',
+                        {!! Form::text('start_date',null,
+                                ['class'=>'form-control startDate englishDatePicker',
                                 'autocomplete'=>'off',
                                 'required',
-                                'min'=>'1'
+                                ])
+                        !!}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputName">
+                            End Date
+                            <span class="text text-danger">
+                                    *
+                                </span>
+                        </label>
+                        {!! Form::text('end_date',null,
+                                ['class'=>'form-control endDate englishDatePicker',
+                                'autocomplete'=>'off',
+                                'required',
                                 ])
                         !!}
                     </div>
@@ -83,7 +96,7 @@
                         <input type="file"
                                class="form-control-file profile-img"
                                accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG, .pdf"
-                               name="file"
+                               name="image"
                         >
 
                         @if($errors->has('image') == null)
@@ -93,20 +106,6 @@
                               {{trans('message.pages.users_management.file_upload_message')}}
                             </span>
                         @endif
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputName">
-                            Event Date
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::text('event_date',null,
-                                ['class'=>'form-control englishDatePicker eventDate',
-                                'autocomplete'=>'off',
-                                'required',
-                                ])
-                        !!}
                     </div>
 
 
