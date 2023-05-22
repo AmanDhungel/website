@@ -154,6 +154,31 @@ class GalleryController extends BaseController
             return back();
         }
     }
+    public function bannerImageStatus($id): RedirectResponse
+    {
+        try {
+            $id = (int) $id;
+            $value = $this->model->find($id);
+            if ($value->is_banner_image == 0) {
+                DB::beginTransaction();
+                $this->model->bannerImageStatus($value->id, 1);
+                DB::commit();
+                session()->flash('success', 'Status successfully updated !');
+            } elseif ($value->is_banner_image == 1) {
+                DB::beginTransaction();
+                $this->model->bannerImageStatus($value->id, 0);
+                DB::commit();
+                session()->flash('success', 'Status successfully updated !');
+            }
+
+            return back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Session::flash('server_error', Lang::get('message.commons.technicalError'));
+
+            return back();
+        }
+    }
 
     public function order($id,Request $request): RedirectResponse
     {

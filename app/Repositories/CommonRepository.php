@@ -103,6 +103,11 @@ class CommonRepository
         return $this->model->where('id', $id)->update(['status' => $status]);
     }
 
+    public function bannerImageStatus($id, $status)
+    {
+        return $this->model->where('id', $id)->update(['is_banner_image' => $status]);
+    }
+
     // find last record
     public function findLastRecord($selectColumnName)
     {

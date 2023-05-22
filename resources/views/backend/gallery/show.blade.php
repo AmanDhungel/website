@@ -36,27 +36,38 @@
 
                         @endif
                     </div>
+{{--                    <div class="form-group col-md-4 {{setFont()}}">--}}
+{{--                        <label for="">--}}
+{{--                            Order--}}
+{{--                        </label>--}}
+{{--                        @if(isset($data->order))--}}
+{{--                            <input type="text"--}}
+{{--                                   class="form-control"--}}
+{{--                                   value="{{  $data->order  }}"--}}
+{{--                                   readonly--}}
+{{--                            >--}}
+{{--                        @else--}}
+{{--                            <input type="text"--}}
+{{--                                   class="form-control"--}}
+{{--                                   value="" readonly--}}
+{{--                            >--}}
+
+{{--                        @endif--}}
+{{--                    </div>--}}
+
+
+
+
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">
-                            Order
+                          Is Banner Image ?
                         </label>
-                        @if(isset($data->order))
-                            <input type="text"
-                                   class="form-control"
-                                   value="{{  $data->order  }}"
-                                   readonly
-                            >
-                        @else
-                            <input type="text"
-                                   class="form-control"
-                                   value="" readonly
-                            >
-
-                        @endif
+                        <input type="text"
+                               class="form-control"
+                               value="{{ $data->is_banner_image == 1 ? 'Yes' : 'No' }}"
+                               readonly
+                        >
                     </div>
-
-
-
 
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">

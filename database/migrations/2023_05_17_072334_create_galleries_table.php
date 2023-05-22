@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->longText('descriptions')->nullable();
             $table->boolean('status')->default(true);
-            $table->boolean('is_banner_show')->default(true);
-            $table->integer('order');
+            $table->boolean('is_banner_image')->default(true);
+            $table->integer('order')->nullable();
             $table->string('image')->nullable();
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade');

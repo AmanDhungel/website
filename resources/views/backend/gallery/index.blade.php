@@ -104,10 +104,12 @@
                                                     Title
                                                 </th>
                                                 <th>
-                                                    Order
-                                                </th>
-                                                <th>
                                                     Image
+                                                </th>
+
+
+                                                <th width="15%">
+                                                    Is banner Image ?
                                                 </th>
 
                                                 <th width="10%">
@@ -131,24 +133,29 @@
                                                             {{$data->title}}
                                                         @endif
                                                     </td>
-
-                                                    <td>
-                                                        @if(isset($data->order))
-                                                            {{$data->order}}
-                                                        @endif
-                                                        &nbsp;
-                                                        <button type="button"
-                                                                class="btn btn-success btn-xs rounded-pill {{setFont()}}"
-                                                                data-toggle="modal"
-                                                                data-target="#orderModal{{$key}}"
-                                                                data-placement="top"
-                                                                title="Update Order"
-                                                        >
-                                                            Update
-                                                        </button>
-                                                    </td>
                                                     <td>
                                                         @include('backend.components.commonImageLoad')
+                                                    </td>
+                                                    <td>
+                                                        @if($data->is_banner_image == true)
+                                                            <button type="button"
+                                                                    class="btn btn-success btn-xs rounded-pill {{setFont()}}"
+                                                                    data-toggle="modal"
+                                                                    data-target="#bannerModal{{$key}}"
+                                                                    title="{{trans('message.button.is_banner_image_update')}}"
+                                                            >
+                                                               Yes
+                                                            </button>
+                                                        @elseif($data->is_banner_image== false)
+                                                            <button type="button"
+                                                                    class="btn btn-danger btn-xs rounded-pill {{setFont()}}"
+                                                                    data-toggle="modal"
+                                                                    data-target="#bannerModal{{$key}}"
+                                                                    title="{{trans('message.button.status_update')}}"
+                                                            >
+                                                                No
+                                                            </button>
+                                                        @endif
                                                     </td>
                                                     <td class="{{setFont()}}">
                                                         @include('backend.components.buttons.status')
@@ -163,6 +170,7 @@
                                                 @include('backend.gallery.edit')
                                                 @include('backend.gallery.show')
                                                 @include('backend.components.orderUpdateModal')
+                                                @include('backend.gallery.bannerStatusModal')
                                             @endforeach
                                             </tbody>
                                         </table>

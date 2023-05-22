@@ -8,5 +8,8 @@ Route::resource('/galleryManagement', GalleryController::class)
 
 Route::post('/galleryManagement/status/{id}', [GalleryController::class, 'status']);
 
+Route::post('/galleryManagement/bannerImageStatus/{id}', [GalleryController::class, 'bannerImageStatus']);
+
+
 Route::post('/galleryManagement/order/{id}', [GalleryController::class, 'order']);
 

@@ -25,7 +25,6 @@ class GalleryRequest extends FormRequest
     {
         return [
             'title'=>'required',
-            'order'=>'required',
             'image'=>'nullable|mimes:jpeg,jpg,png|max:1048',
         ];
     }

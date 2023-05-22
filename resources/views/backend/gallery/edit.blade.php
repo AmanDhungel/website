@@ -48,22 +48,22 @@
                                 ])
                         !!}
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputName">
-                            Order
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::number('order',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Order',
-                                'autocomplete'=>'off',
-                                'required',
-                                'min'=>'1'
-                                ])
-                        !!}
-                    </div>
+{{--                    <div class="form-group col-md-6">--}}
+{{--                        <label for="inputName">--}}
+{{--                            Order--}}
+{{--                            <span class="text text-danger">--}}
+{{--                                    *--}}
+{{--                                </span>--}}
+{{--                        </label>--}}
+{{--                        {!! Form::number('order',null,--}}
+{{--                                ['class'=>'form-control',--}}
+{{--                                'placeholder'=>'Order',--}}
+{{--                                'autocomplete'=>'off',--}}
+{{--                                'required',--}}
+{{--                                'min'=>'1'--}}
+{{--                                ])--}}
+{{--                        !!}--}}
+{{--                    </div>--}}
 
                     @if($data->image !=null)
                         <div class="form-group col-md-4 {{setFont()}}">
@@ -114,6 +114,29 @@
                             </span>
                         @endif
                     </div>
+                    <div class="form-group col-md-4 {{setFont()}}">
+                        <label>
+                           Is Banner ?
+                        </label>
+                        <br>
+                        <input class="radio-button"
+                               type="radio"
+                               name="is_banner_image"
+                               @if($data->is_banner_image == true) checked @endif
+                               value="1"
+                               style="margin-top: 2px"
+                        >
+                        Yes
+                        &nbsp; &nbsp;
+                        <input class="radio-button"
+                               type="radio"
+                               name="is_banner_image"
+                               @if($data->is_banner_image == false) checked @endif
+                               value="0" style="margin-top: 2px"
+                        >
+                      No
+                    </div>
+
 
                     @include('backend.components.commonEditStatus')
                 </div>

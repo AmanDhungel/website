@@ -16,13 +16,13 @@ class Gallery extends Model
         [
             'title',
             'descriptions',
-            'file',
+            'image',
             'order',
             'created_by',
             'updated_by',
             'deleted_by',
             'status',
-            'is_banner_show',
+            'is_banner_image',
         ];
 
     public function createdBy(): BelongsTo

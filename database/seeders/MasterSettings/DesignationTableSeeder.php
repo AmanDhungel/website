@@ -19,47 +19,29 @@ class DesignationTableSeeder extends Seeder
         DB::table('designations')->truncate();
         $rows = [
             [
-                'name' => 'Chief Executive Officer',
-                'short_name' => 'CEO',
+                'name' => 'Chairperson',
+                'short_name' => 'C',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Chief Technical Officer',
-                'short_name' => 'CTO',
+                'name' => 'Executive Director',
+                'short_name' => 'ED',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Managing Director',
-                'short_name' => 'MD',
+                'name' => 'Treasure',
+                'short_name' => 'T',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'Project Manager / Business Analyst',
-                'short_name' => 'PM / BA',
+                'name' => 'Information Officer',
+                'short_name' => 'IO',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Human Resource Manager',
-                'short_name' => 'HRM',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Marketing Manager',
-                'short_name' => 'MM',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Accountant',
-                'short_name' => 'Acc',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
+            ]
         ];
         DB::table('designations')->insert($rows);
     }
