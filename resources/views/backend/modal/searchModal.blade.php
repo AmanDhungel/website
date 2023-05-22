@@ -42,6 +42,7 @@
                             trans('message.commons.selectStatus')])
                         !!}
                     </div>
+                    @if(@$is_date_search ==true)
                     <div class="form-group col-md-6 {{setFont()}}">
                         {!!Form::text('to_date',
                                  Request::get('to_date'),['class'=>'form-control englishDatePicker',
@@ -58,6 +59,7 @@
                                  'width'=>'100%','placeholder' =>trans('message.commons.to_date')])
                          !!}
                     </div>
+                    @endif
                 </div>
 
 

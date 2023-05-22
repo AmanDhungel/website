@@ -367,7 +367,7 @@ class CommonRepository
             ->paginate(10);
     }
 
-    public function getBlogData($request)
+    public function getPageData($request)
     {
         $result = $this->model;
         if ($request->status != null) {
@@ -378,20 +378,7 @@ class CommonRepository
                 ->where('title', 'LIKE', '%'.$request->name.'%');
         }
 
-        if ($request->from_date != null && $request->to_date == null) {
-            $result = $result
-                ->where('published_date', '>=', $request->from_date);
-        }
 
-        if ($request->to_date != null && $request->from_date == null) {
-            $result = $result
-                ->where('published_date', '<=', $request->to_date);
-        }
-
-        if ($request->from_date != null && $request->to_date != null) {
-            $result = $result
-                ->whereBetween('published_date',[$request->from_date,$request->to_date]);
-        }
 
         return $result->orderBy('id', 'desc')
             ->paginate(10);

@@ -72,6 +72,7 @@
                                     <i class="fas fa-filter"></i>
                                     {{ trans('message.button.filter') }}
                                 </button>
+
                                 @if( $request->title !=null || $request->status !=null || $request->from_date !=null || $request->to_date !=null)
 
                                     <a href="{{url(@$page_url)}}"
@@ -83,6 +84,8 @@
                                     </a>
 
                                 @endif
+
+
                             </div>
                             <!-- /.card-header -->
                             <div class="card">
@@ -98,15 +101,9 @@
                                                 </th>
 
 
-                                                <th>
-                                                    Published Date
-                                                </th>
 
                                                 <th>
-                                                   Title
-                                                </th>
-                                                <th>
-                                                    Order
+                                                    Page Title
                                                 </th>
 
                                                 <th width="10%">
@@ -126,31 +123,11 @@
                                                     </th>
 
                                                     <td>
-                                                        @if(isset($data->published_date))
-                                                            {{$data->published_date}}
-                                                        @endif
-                                                    </td>
-                                                    <td>
                                                         @if(isset($data->title))
                                                             {{$data->title}}
                                                         @endif
                                                     </td>
 
-                                                    <td>
-                                                        @if(isset($data->order))
-                                                            {{$data->order}}
-                                                        @endif
-                                                        &nbsp;
-                                                        <button type="button"
-                                                                class="btn btn-success btn-xs rounded-pill {{setFont()}}"
-                                                                data-toggle="modal"
-                                                                data-target="#orderModal{{$key}}"
-                                                                data-placement="top"
-                                                                title="Update Order"
-                                                        >
-                                                            Update
-                                                        </button>
-                                                    </td>
 
                                                     <td class="{{setFont()}}">
                                                         @include('backend.components.buttons.status')
@@ -162,9 +139,8 @@
                                                 </tr>
                                                 @include('backend.modal.status_modal')
                                                 @include('backend.modal.delete_modal')
-                                                @include('backend.notice.edit')
-                                                @include('backend.notice.show')
-                                                @include('backend.components.orderUpdateModal')
+                                                @include('backend.page.edit')
+                                                @include('backend.page.show')
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -197,7 +173,7 @@
         </section>
         <!-- /.container-fluid -->
         <!-- /.content -->
-        @include('backend.notice.add')
+        @include('backend.page.add')
         @include('backend.modal.technical-error-modal')
         @include('backend.modal.searchModal')
     </div>

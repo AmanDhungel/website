@@ -17,15 +17,18 @@ Route::group(['middleware' => ['auth']], function () {
     include_once 'admin/contactMessage.php';
     include_once 'admin/subscriber.php';
     include_once 'admin/systemSetting.php';
-    include_once 'admin/notice.php';
-    include_once 'admin/event.php';
-    include_once 'admin/blog.php';
     include_once 'admin/subscriber.php';
     include_once 'admin/contactMessage.php';
     include_once 'admin/staffMember.php';
     include_once 'admin/executiveCommittee.php';
     include_once 'admin/gallery.php';
     include_once 'admin/video.php';
+    include_once 'admin/page.php';
+    include_once 'admin/partners.php';
+    include_once 'admin/publication.php';
+    include_once 'admin/program.php';
+    include_once 'admin/annoucment.php';
+    include_once 'admin/popup.php';
 
     Route::prefix('masterSettings')->group(function () {
         include_once 'masterSetting/cmsPage.php';

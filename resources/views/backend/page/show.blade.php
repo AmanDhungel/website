@@ -41,26 +41,8 @@
                         <label for="">
                             Description
                         </label>
-                        @if(isset($data->descriptions))
-                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->descriptions}}</textarea>
-                        @else
-                            <input type="text"
-                                   class="form-control"
-                                   value="" readonly
-                            >
-
-                        @endif
-                    </div>
-                    <div class="form-group col-md-4 {{setFont()}}">
-                        <label for="">
-                            Order
-                        </label>
-                        @if(isset($data->order))
-                            <input type="text"
-                                   class="form-control"
-                                   value="{{  $data->order  }}"
-                                   readonly
-                            >
+                        @if(isset($data->page_content))
+                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->page_content}}</textarea>
                         @else
                             <input type="text"
                                    class="form-control"
@@ -72,12 +54,12 @@
 
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">
-                            Published Date
+                            Created Date
                         </label>
-                        @if(isset($data->published_date))
+                        @if(isset($data->created_date))
                             <input type="text"
                                    class="form-control"
-                                   value="{{  $data->published_date  }}"
+                                   value="{{  $data->created_date  }}"
                                    readonly
                             >
                         @else
@@ -102,35 +84,6 @@
                                readonly
                         >
                     </div>
-                    @if($data->image !=null)
-                        <div class="form-group col-md-4 {{setFont()}}">
-                            <label for="">
-                                Uploaded Image
-                            </label>
-                            <br>
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->image)}}"
-                               target="_blank"
-                               class="btn btn-secondary btn-xs rounded-pill"
-                               data-placement="top" title="{{trans('message.pages.common.viewFile')}}"
-                               style="margin: 10px 0 0 10px;"
-                            >
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            &nbsp;
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->image)}}"
-                               target="_blank"
-                               class="btn btn-danger btn-xs rounded-pill"
-                               data-placement="top" title="Download Image"
-                               style="margin: 10px 0 0 10px;"
-                               download=""
-                            >
-                                <i class="fa fa-download"></i>
-                            </a>
-
-                        </div>
-                    @endif
 
                     @include('backend.components.actionBy.createdBy')
                     @include('backend.components.actionBy.updatedBy')

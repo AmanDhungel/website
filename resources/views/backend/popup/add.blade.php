@@ -50,9 +50,9 @@
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('descriptions',null,
+                        {!! Form::textarea('content',null,
                                 ['class'=>'form-control',
-                                'placeholder'=>'Enter  Details',
+                                'placeholder'=>'Enter Notice Details',
                                 'rows'=>'4',
                                 'autocomplete'=>'off'
                                 ])
@@ -60,41 +60,33 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">
-                            Order
+                            Start Date
                             <span class="text text-danger">
                                     *
                                 </span>
                         </label>
-                        {!! Form::number('order',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Order',
+                        {!! Form::text('start_date',null,
+                                ['class'=>'form-control startDate englishDatePicker',
                                 'autocomplete'=>'off',
                                 'required',
-                                'min'=>'1'
                                 ])
                         !!}
                     </div>
 
                     <div class="form-group col-md-6">
-
-                        <label for="image">
-                            File
+                        <label for="inputName">
+                            End Date
+                            <span class="text text-danger">
+                                    *
+                                </span>
                         </label>
-                        <input type="file"
-                               class="form-control-file profile-img"
-                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"
-                               name="image"
-                        >
-
-                        @if($errors->has('image') == null)
-                            <span class="text text-danger"
-                                  style="font-size: 14px;color: #ff042c"
-                            >
-                              {{trans('message.pages.users_management.file_upload_message')}}
-                            </span>
-                        @endif
+                        {!! Form::text('end_date',null,
+                                ['class'=>'form-control endDate englishDatePicker',
+                                'autocomplete'=>'off',
+                                'required',
+                                ])
+                        !!}
                     </div>
-
 
 
                     @include('backend.components.commonAddStatus')

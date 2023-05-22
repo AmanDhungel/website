@@ -15,13 +15,21 @@ $("document").ready(function () {
         maxDate:0
     });
 
-    $(".eventDate").datepicker({
+    $(".startDate").datepicker({
         dateFormat: 'yy-mm-dd',
         autoClose: true,
         changeMonth: true,
         changeYear: true,
         minDate:0
     });
+    $(".endDate").datepicker({
+        dateFormat: 'yy-mm-dd',
+        autoClose: true,
+        changeMonth: true,
+        changeYear: true,
+        minDate:0
+    });
+
 
 });
 

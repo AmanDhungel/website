@@ -72,7 +72,6 @@
                                     <i class="fas fa-filter"></i>
                                     {{ trans('message.button.filter') }}
                                 </button>
-
                                 @if( $request->title !=null || $request->status !=null || $request->from_date !=null || $request->to_date !=null)
 
                                     <a href="{{url(@$page_url)}}"
@@ -84,8 +83,6 @@
                                     </a>
 
                                 @endif
-
-
                             </div>
                             <!-- /.card-header -->
                             <div class="card">
@@ -102,14 +99,15 @@
 
 
                                                 <th>
-                                                    Published Date
+                                                   Title
                                                 </th>
 
                                                 <th>
-                                                    Title
+                                                    Start Date
                                                 </th>
+
                                                 <th>
-                                                    Order
+                                                    End  Date
                                                 </th>
 
                                                 <th width="10%">
@@ -127,12 +125,6 @@
                                                     <th scope="row {{setFont()}}">
                                                         {{ ($results->currentpage()-1) * $results->perpage() + $key+1 }}
                                                     </th>
-
-                                                    <td>
-                                                        @if(isset($data->published_date))
-                                                            {{$data->published_date}}
-                                                        @endif
-                                                    </td>
                                                     <td>
                                                         @if(isset($data->title))
                                                             {{$data->title}}
@@ -140,20 +132,17 @@
                                                     </td>
 
                                                     <td>
-                                                        @if(isset($data->order))
-                                                            {{$data->order}}
+                                                        @if(isset($data->start_date))
+                                                            {{$data->start_date}}
                                                         @endif
-                                                        &nbsp;
-                                                        <button type="button"
-                                                                class="btn btn-success btn-xs rounded-pill {{setFont()}}"
-                                                                data-toggle="modal"
-                                                                data-target="#orderModal{{$key}}"
-                                                                data-placement="top"
-                                                                title="Update Order"
-                                                        >
-                                                            Update
-                                                        </button>
                                                     </td>
+                                                    <td>
+                                                        @if(isset($data->end_date))
+                                                            {{$data->end_date}}
+                                                        @endif
+                                                    </td>
+
+
 
                                                     <td class="{{setFont()}}">
                                                         @include('backend.components.buttons.status')
@@ -165,9 +154,8 @@
                                                 </tr>
                                                 @include('backend.modal.status_modal')
                                                 @include('backend.modal.delete_modal')
-                                                @include('backend.blog.edit')
-                                                @include('backend.blog.show')
-                                                @include('backend.components.orderUpdateModal')
+                                                @include('backend.popup.edit')
+                                                @include('backend.popup.show')
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -200,7 +188,7 @@
         </section>
         <!-- /.container-fluid -->
         <!-- /.content -->
-        @include('backend.blog.add')
+        @include('backend.popup.add')
         @include('backend.modal.technical-error-modal')
         @include('backend.modal.searchModal')
     </div>
