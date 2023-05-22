@@ -50,13 +50,7 @@
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('content',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter Notice Details',
-                                'rows'=>'4',
-                                'autocomplete'=>'off'
-                                ])
-                        !!}
+                        <textarea name="editor1"></textarea>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">

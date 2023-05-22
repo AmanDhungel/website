@@ -26,6 +26,9 @@ class Program extends Model
             'status',
         ];
 
+    public function type(){
+        return$this->belongsTo(ProgramType::class,'type_id');
+    }
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

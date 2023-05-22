@@ -17,7 +17,6 @@ class Announcement extends Model
             'type_id',
             'title',
             'description',
-            'start_date',
             'created_date',
             'announcement_file',
             'created_by',
@@ -26,6 +25,9 @@ class Announcement extends Model
             'status',
         ];
 
+    public function type(){
+        return $this->belongsTo(PartnerType::class,'type_id');
+    }
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

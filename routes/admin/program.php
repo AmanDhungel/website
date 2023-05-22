@@ -7,4 +7,3 @@ Route::resource('/programs', ProgramController::class)
     ->except(['create', 'edit', 'show']);
 
 Route::post('/programs/status/{id}', [ProgramController::class, 'status']);
-

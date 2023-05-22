@@ -18,7 +18,7 @@
             <div class="modal-body">
 
                 <div class="row">
-                    <div class="form-group col-md-12 {{setFont()}}">
+                    <div class="form-group col-md-6 {{setFont()}}">
                         <label for="">
                             Title
                         </label>
@@ -37,12 +37,32 @@
                         @endif
                     </div>
 
+                    <div class="form-group col-md-6 {{setFont()}}">
+                        <label for="">
+                            Publication Type
+                        </label>
+                        @if(isset($data->type_id))
+                            <input type="text"
+                                   class="form-control"
+                                   value="{{ @$data->type->name  }}"
+                                   readonly
+                            >
+                        @else
+                            <input type="text"
+                                   class="form-control"
+                                   value="" readonly
+                            >
+
+                        @endif
+                    </div>
+
                     <div class="form-group col-md-12 {{setFont()}}">
                         <label for="">
                             Description
                         </label>
-                        @if(isset($data->descriptions))
-                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->descriptions}}</textarea>
+
+                        @if(isset($data->description))
+                            {!! $data->description !!}
                         @else
                             <input type="text"
                                    class="form-control"
@@ -53,12 +73,12 @@
                     </div>
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">
-                            Order
+                            Created Date
                         </label>
-                        @if(isset($data->order))
+                        @if(isset($data->created_date))
                             <input type="text"
                                    class="form-control"
-                                   value="{{  $data->order  }}"
+                                   value="{{  $data->created_date  }}"
                                    readonly
                             >
                         @else
@@ -69,28 +89,6 @@
 
                         @endif
                     </div>
-
-                    <div class="form-group col-md-4 {{setFont()}}">
-                        <label for="">
-                            Event Date
-                        </label>
-                        @if(isset($data->event_date))
-                            <input type="text"
-                                   class="form-control"
-                                   value="{{  $data->event_date  }}"
-                                   readonly
-                            >
-                        @else
-                            <input type="text"
-                                   class="form-control"
-                                   value="" readonly
-                            >
-
-                        @endif
-                    </div>
-
-
-
 
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="">
@@ -102,42 +100,12 @@
                                readonly
                         >
                     </div>
-                    @if($data->file !=null)
-                        <div class="form-group col-md-4 {{setFont()}}">
-                            <label for="">
-                                Uploaded File
-                            </label>
-                            <br>
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
-                               target="_blank"
-                               class="btn btn-secondary btn-xs rounded-pill"
-                               data-placement="top" title="{{trans('message.pages.common.viewFile')}}"
-                               style="margin: 10px 0 0 10px;"
-                            >
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            &nbsp;
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
-                               target="_blank"
-                               class="btn btn-danger btn-xs rounded-pill"
-                               data-placement="top" title="Download Image"
-                               style="margin: 10px 0 0 10px;"
-                               download=""
-                            >
-                                <i class="fa fa-download"></i>
-                            </a>
-
-                        </div>
-                    @endif
 
                     @include('backend.components.actionBy.createdBy')
                     @include('backend.components.actionBy.updatedBy')
 
 
                 </div>
-
 
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-danger rounded-pill {{setFont()}}"

@@ -18,7 +18,7 @@
             <div class="modal-body">
 
                 <div class="row">
-                    <div class="form-group col-md-12 {{setFont()}}">
+                    <div class="form-group col-md-6 {{setFont()}}">
                         <label for="">
                             Title
                         </label>
@@ -37,12 +37,32 @@
                         @endif
                     </div>
 
+                    <div class="form-group col-md-6 {{setFont()}}">
+                        <label for="">
+                            Program Type
+                        </label>
+                        @if(isset($data->type_id))
+                            <input type="text"
+                                   class="form-control"
+                                   value="{{ @$data->type->name  }}"
+                                   readonly
+                            >
+                        @else
+                            <input type="text"
+                                   class="form-control"
+                                   value="" readonly
+                            >
+
+                        @endif
+                    </div>
+
                     <div class="form-group col-md-12 {{setFont()}}">
                         <label for="">
                             Description
                         </label>
+
                         @if(isset($data->description))
-                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->description}}</textarea>
+                            {!! $data->description !!}
                         @else
                             <input type="text"
                                    class="form-control"
@@ -88,8 +108,6 @@
 
                         @endif
                     </div>
-
-
 
 
                     <div class="form-group col-md-4 {{setFont()}}">

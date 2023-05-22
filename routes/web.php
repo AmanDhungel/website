@@ -12,7 +12,7 @@ Route::group(['middleware' => ['auth']], function () {
     include_once 'admin/roles.php';
     include_once 'admin/users.php';
     include_once 'admin/banner.php';
-    include_once 'admin/aboutUs.php';
+//    include_once 'admin/aboutUs.php';
     include_once 'admin/team.php';
     include_once 'admin/contactMessage.php';
     include_once 'admin/subscriber.php';
@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
     include_once 'admin/program.php';
     include_once 'admin/annoucment.php';
     include_once 'admin/popup.php';
+    include_once 'admin/headerMenu.php';
 
     Route::prefix('masterSettings')->group(function () {
         include_once 'masterSetting/cmsPage.php';

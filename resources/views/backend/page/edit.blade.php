@@ -52,29 +52,9 @@
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('page_content',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter  Details',
-                                'rows'=>'4',
-                                'autocomplete'=>'off'
-                                ])
-                        !!}
-                    </div>
-
-                    <div class="form-group col-md-12 {{setFont()}}">
-                        <label for="inputName">
-                            Page Slug
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::text('page_url',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter Slug',
-                                'autocomplete'=>'off',
-                                'required'
-                                ])
-                        !!}
+                        <textarea name="edit{{$data->id}}" class="form-control" required>
+                            {!! $data->page_content !!}
+                        </textarea>
                     </div>
 
                     @include('backend.components.commonEditStatus')

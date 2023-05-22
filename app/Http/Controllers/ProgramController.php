@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FileUploadLibraryHelper;
-use App\Http\Controllers\BaseController;
-use App\Http\Requests\BannerRequest;
-use App\Http\Requests\Roles\RoleRequest;
-use App\Models\Banner;
 use App\Models\Program;
+use App\Models\ProgramType;
 use App\Repositories\CommonRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -82,8 +79,8 @@ class ProgramController extends BaseController
                 'plugins/input-mask/jquery/extension.min.js',
                 'plugins/datepicker/english/english-datepicker.min.js',
                 'js/custom_search.js',
-
             ];
+            $data['programTypes']=ProgramType::all();
 
             return view('backend.program.index', $data);
         } catch (\Exception $e) {
@@ -103,21 +100,12 @@ class ProgramController extends BaseController
     {
         try {
             $data = $request->all();
-            if (! empty($request->file('image'))) {
-                $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->title);
-                $imageSuccess = true;
-            }
+            $data['description']=$request->editor1;
             $data['created_by'] = userInfo()->id;
-
             DB::beginTransaction();
-
             $create = $this->model->create($data);
             DB::commit();
-            if($create){
-                if (isset($imageSuccess)) {
-                    FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], Program::PROGRAM_FILE_PATH);
-                }
-            }
+
             session()->flash('success', Lang::get('message.flash_messages.insertMessage'));
 
             return back();
@@ -156,27 +144,6 @@ class ProgramController extends BaseController
         }
     }
 
-    public function order($id,Request $request): RedirectResponse
-    {
-        try {
-            $id = (int) $id;
-            $value = $this->model->find($id);
-            if ($value) {
-                DB::beginTransaction();
-                $update = $this->model->update($request->all(), $id);
-                DB::commit();
-                session()->flash('success', Lang::get('message.flash_messages.statusActiveMessage'));
-            }
-
-            return back();
-        } catch (\Exception $e) {
-            DB::rollback();
-            Session::flash('server_error', Lang::get('message.commons.technicalError'));
-
-            return back();
-        }
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -191,17 +158,9 @@ class ProgramController extends BaseController
             if($value){
 
                 $data = $request->all();
-                if (! empty($request->file('image'))) {
-                    $data['image'] = FileUploadLibraryHelper::setFileUploadName($request->image, $request->title);
-                    $imageSuccess = true;
-                }
+                $data['description']=$data['edit'.$id];
                 $data['updated_by'] = userInfo()->id;
                 $update = $this->model->update($data, $id);
-                if($update){
-                    if (isset($imageSuccess)) {
-                        FileUploadLibraryHelper::setFileUploadPath($request->image, $data['image'], Program::PROGRAM_FILE_PATH);
-                    }
-                }
                 DB::commit();
             }
             session()->flash('success', Lang::get('message.flash_messages.updateMessage'));

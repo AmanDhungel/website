@@ -50,32 +50,8 @@
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('page_content',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter  Details',
-                                'rows'=>'4',
-                                'autocomplete'=>'off'
-                                ])
-                        !!}
+                        <textarea name="editor1" required></textarea>
                     </div>
-
-                    <div class="form-group col-md-12 {{setFont()}}">
-                        <label for="inputName">
-                            Page Slug
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::text('page_url',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter Slug',
-                                'autocomplete'=>'off',
-                                'required'
-                                ])
-                        !!}
-                    </div>
-
-
 
                     @include('backend.components.commonAddStatus')
 

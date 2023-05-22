@@ -103,6 +103,7 @@
                                                 <th>
                                                     Title
                                                 </th>
+                                                <th>Type</th>
                                                 <th>
                                                     Start Date
                                                 </th>
@@ -131,6 +132,8 @@
                                                             {{$data->title}}
                                                         @endif
                                                     </td>
+
+                                                    <td>{{@$data->type->name}}</td>
 
                                                     <td>
                                                         @if(isset($data->start_date))
@@ -191,7 +194,7 @@
         <!-- /.content -->
         @include('backend.program.add')
         @include('backend.modal.technical-error-modal')
-        @include('backend.modal.searchModal')
+        @include('backend.program.searchModal')
     </div>
 
     <!-- /.content-wrapper -->

@@ -98,7 +98,7 @@ class PopupController extends BaseController
     {
         try {
             $data = $request->all();
-
+            $data['content']=$request->editor1;
             $data['created_by'] = userInfo()->id;
             $data['created_date'] = Carbon::now()->toDateString();
 
@@ -158,6 +158,7 @@ class PopupController extends BaseController
             if($value){
 
                 $data = $request->all();
+                $data['content']=$data['edit'.$id];
                 $data['updated_by'] = userInfo()->id;
                 $this->model->update($data, $id);
                 DB::commit();

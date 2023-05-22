@@ -7,6 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Session\TokenMismatchException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use PDOException;
 use Psr\Log\LogLevel;
@@ -66,6 +67,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+
         if ($this->isHttpException($exception)) {
             if (! method_exists($exception, 'getStatusCode') || ! $request->wantsJson()) {
                 $status = $exception->getStatusCode();

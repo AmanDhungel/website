@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\HeaderMenu;
+use App\Models\Roles\Menu;
 use App\Models\Roles\Role;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -117,12 +119,31 @@ class CommonRepository
     public function getData($request)
     {
         $result = $this->model;
-        if ($request->status != null) {
-            $result = $result->where('status', $request->status);
+        if ($request->type_id != null) {
+            $result = $result->where('type_id', $request->type_id);
+        }
+
+        if ($request->title != null) {
+            $result = $result->where('title','like','%'.$request->title);
+        }
+
+        if ($request->from_date != null) {
+            if($request->to_date != null){
+                $result = $result->whereBetween('start_date',[$request->from_date,$request->to_date]);
+            }else{
+                $result = $result->whereBetween('start_date',[$request->from_date,$request->from_date]);
+            }
         }
 
         return $result->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(100);
+    }
+
+    public function getHeaderMenus()
+    {
+        $result = $this->model;
+        return $result->orderBy('id', 'asc')
+            ->paginate(100);
     }
 
     public function getCmsPageData($request)
@@ -378,9 +399,11 @@ class CommonRepository
                 ->where('title', 'LIKE', '%'.$request->name.'%');
         }
 
-
-
         return $result->orderBy('id', 'desc')
             ->paginate(10);
+    }
+
+    public function getParentMenu($id){
+        return HeaderMenu::where('id',$id)->first();
     }
 }

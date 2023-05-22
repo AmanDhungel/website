@@ -37,6 +37,7 @@
                 data-target="#editModal{{$key}}"
                 data-placement="top"
                 title="{{trans('message.button.edit')}}"
+                onclick="editEditor({{$data->id}})"
         >
             <i class="fas fa-pencil-alt"></i>
         </button>

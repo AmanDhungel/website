@@ -31,7 +31,7 @@
                 <div class="row">
 
 
-                    <div class="form-group col-md-12 {{setFont()}}">
+                    <div class="form-group col-md-6 {{setFont()}}">
                         <label for="inputName">
                             {{trans('Title')}}
                             <span class="text text-danger">
@@ -46,69 +46,28 @@
                                 ])
                         !!}
                     </div>
+
+                    <div class="form-group col-md-6 {{setFont()}}">
+                        <label for="inputName">
+                            {{trans('Types')}}
+                            <span class="text text-danger">
+                                    *
+                                </span>
+                        </label>
+                        {!! Form::select('type_id',$publicationTypes->pluck('name','id'),null,
+                                ['class'=>'form-control select2',
+                                'placeholder'=>'Select Type',
+                                'autocomplete'=>'off',
+                                'required'
+                                ])
+                        !!}
+                    </div>
                     <div class="form-group col-md-12 {{setFont()}}">
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('descriptions',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter  Details',
-                                'rows'=>'4',
-                                'autocomplete'=>'off'
-                                ])
-                        !!}
+                        <textarea name="editor1"></textarea>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputName">
-                            Order
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::number('order',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Order',
-                                'autocomplete'=>'off',
-                                'required',
-                                'min'=>'1'
-                                ])
-                        !!}
-                    </div>
-
-                    <div class="form-group col-md-6">
-
-                        <label for="image">
-                            File
-                        </label>
-                        <input type="file"
-                               class="form-control-file profile-img"
-                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG, .pdf"
-                               name="file"
-                        >
-
-                        @if($errors->has('image') == null)
-                            <span class="text text-danger"
-                                  style="font-size: 14px;color: #ff042c"
-                            >
-                              {{trans('message.pages.users_management.file_upload_message')}}
-                            </span>
-                        @endif
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputName">
-                            Event Date
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::text('event_date',null,
-                                ['class'=>'form-control englishDatePicker eventDate',
-                                'autocomplete'=>'off',
-                                'required',
-                                ])
-                        !!}
-                    </div>
-
 
                     @include('backend.components.commonAddStatus')
 

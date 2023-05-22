@@ -58,8 +58,8 @@ class PageController extends BaseController
     public function index(Request $request)
     {
         try {
-            $data['page_url'] = 'pages';
-            $data['page_route'] = 'pages';
+            $data['page_url'] = 'pagemanager';
+            $data['page_route'] = 'pagemanager';
 
             $data['results'] = $this->model->getPageData($request);
             $data['page_title'] = 'Page Manager';
@@ -84,7 +84,8 @@ class PageController extends BaseController
     {
         try {
             $data = $request->all();
-
+            $data['page_content']=$request->editor1;
+            $data['page_url']=str_replace(' ', '-',strtolower($request->title));
             $data['created_by'] = userInfo()->id;
             $data['created_date'] = Carbon::now()->toDateString();
 
@@ -130,27 +131,6 @@ class PageController extends BaseController
         }
     }
 
-    public function order($id,Request $request): RedirectResponse
-    {
-        try {
-            $id = (int) $id;
-            $value = $this->model->find($id);
-            if ($value) {
-                DB::beginTransaction();
-                $update = $this->model->update($request->all(), $id);
-                DB::commit();
-                session()->flash('success', Lang::get('message.flash_messages.statusActiveMessage'));
-            }
-
-            return back();
-        } catch (\Exception $e) {
-            DB::rollback();
-            Session::flash('server_error', Lang::get('message.commons.technicalError'));
-
-            return back();
-        }
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -163,8 +143,9 @@ class PageController extends BaseController
             DB::beginTransaction();
             $value =  $this->model->find($id);
             if($value){
-
                 $data = $request->all();
+                $data['page_content']=$data['edit'.$id];
+                $data['page_url']=str_replace(' ', '-',strtolower($request->title));
                 $data['updated_by'] = userInfo()->id;
                 $this->model->update($data, $id);
                 DB::commit();

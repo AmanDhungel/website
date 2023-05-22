@@ -42,7 +42,7 @@
                             Description
                         </label>
                         @if(isset($data->page_content))
-                            <textarea class="form-control" rows="6" cols="6" readonly>{{$data->page_content}}</textarea>
+                            {!! $data->page_content !!}
                         @else
                             <input type="text"
                                    class="form-control"

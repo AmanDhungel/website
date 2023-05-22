@@ -140,6 +140,17 @@ class UserRolesTableSeeder extends Seeder
                  'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'role_id' => 2,
+                'menu_id' => 13,
+                'allow_index' => true,
+                'allow_add' => true,
+                'allow_edit' => true,
+                'allow_delete' => false,
+                'allow_show' => true,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
 
         ];
 

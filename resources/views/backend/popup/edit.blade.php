@@ -54,106 +54,10 @@
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('descriptions',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter Banner Description',
-                                'rows'=>'4',
-                                'autocomplete'=>'off'
-                                ])
-                        !!}
+                        <textarea name="edit{{$data->id}}" class="form-control">
+                            {!! $data->content !!}
+                        </textarea>
                         {!! $errors->first('details', '<span class="label label-danger">:message</span>') !!}
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputName">
-                            Order
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::number('order',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Order',
-                                'autocomplete'=>'off',
-                                'required',
-                                'min'=>'1'
-                                ])
-                        !!}
-                        {!! $errors->first('name', '<small class="text text-danger">:message</small>') !!}
-                    </div>
-                    @if($data->file !=null)
-                        <div class="form-group col-md-4 {{setFont()}}">
-                            <label for="">
-                                Uploaded File
-                            </label>
-                            <br>
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
-                               target="_blank"
-                               class="btn btn-secondary btn-xs rounded-pill"
-                               data-placement="top" title="{{trans('message.pages.common.viewFile')}}"
-                               style="margin: 10px 0 0 10px;"
-                            >
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            &nbsp;
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
-                               target="_blank"
-                               class="btn btn-danger btn-xs rounded-pill"
-                               data-placement="top" title="Download Image"
-                               style="margin: 10px 0 0 10px;"
-                               download=""
-                            >
-                                <i class="fa fa-download"></i>
-                            </a>
-
-                        </div>
-                    @endif
-
-                    <div class="form-group col-md-6">
-
-                        <label for="image">
-                            File
-                        </label>
-                        <input type="file"
-                               class="form-control-file profile-img"
-                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG, .pdf"
-                               name="file"
-                        >
-
-                        @if($errors->has('image') == null)
-                            <span class="text text-danger"
-                                  style="font-size: 14px;color: #ff042c"
-                            >
-                              {{trans('message.pages.users_management.file_upload_message')}}
-                            </span>
-                        @endif
-                    </div>
-                    <div class="form-group col-md-6 {{setFont()}}">
-                        <label>
-                            Is Highlight Notice ?
-                        </label>
-                        <br>
-                        <input class="radio-button"
-                               type="radio"
-                               name="is_highlight_notice"
-                               value="1"
-                               @if($data->is_heighlight_notice ==true)
-                               checked
-                               @endif
-                               style="margin-top: 2px"
-                        >
-                        Yes
-                        &nbsp; &nbsp;
-                        <input class="radio-button"
-                               type="radio"
-                               @if($data->is_heighlight_notice ==false)
-                               checked
-                               @endif
-                               name="is_highlight_notice"
-                               value="0" style="margin-top: 2px"
-                        >
-                        No
                     </div>
 
                     @include('backend.components.commonEditStatus')

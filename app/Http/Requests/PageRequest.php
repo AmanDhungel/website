@@ -25,8 +25,6 @@ class PageRequest extends FormRequest
     {
         return [
             'title'=>'required',
-            'page_content'=>'required',
-            'page_url'=>'required',
         ];
     }
 }

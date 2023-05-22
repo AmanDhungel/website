@@ -33,7 +33,7 @@
                        ])
                 !!}
                 <div class="row">
-                    <div class="form-group col-md-12 {{setFont()}}">
+                    <div class="form-group col-md-6 {{setFont()}}">
                         <label for="inputName">
                             {{trans('Title')}}
                             <span class="text text-danger">
@@ -48,95 +48,39 @@
                                 ])
                         !!}
                     </div>
+
+                    <div class="form-group col-md-6 {{setFont()}}">
+                        <label for="inputName">
+                            {{trans('Types')}}
+                            <span class="text text-danger">
+                                    *
+                                </span>
+                        </label>
+                        {!! Form::select('type_id',$publicationTypes->pluck('name','id'),null,
+                                ['class'=>'form-control select2',
+                                'placeholder'=>'Select Type',
+                                'autocomplete'=>'off',
+                                'required'
+                                ])
+                        !!}
+                    </div>
                     <div class="form-group col-md-12 {{setFont()}}">
                         <label for="inputDescription">
                             {{trans('message.pages.roles.details')}}
                         </label>
-                        {!! Form::textarea('descriptions',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Enter  Details',
-                                'rows'=>'4',
-                                'autocomplete'=>'off'
-                                ])
-                        !!}
+                        <textarea name="edit{{$data->id}}" class="form-control">
+                            {!! $data->description !!}
+                        </textarea>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputName">
-                            Order
+                            Created Date
                             <span class="text text-danger">
                                     *
                                 </span>
                         </label>
-                        {!! Form::number('order',null,
-                                ['class'=>'form-control',
-                                'placeholder'=>'Order',
-                                'autocomplete'=>'off',
-                                'required',
-                                'min'=>'1'
-                                ])
-                        !!}
-                    </div>
-
-                    @if($data->file !=null)
-                        <div class="form-group col-md-4 {{setFont()}}">
-                            <label for="">
-                                Uploaded File
-                            </label>
-                            <br>
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
-                               target="_blank"
-                               class="btn btn-secondary btn-xs rounded-pill"
-                               data-placement="top" title="{{trans('message.pages.common.viewFile')}}"
-                               style="margin: 10px 0 0 10px;"
-                            >
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            &nbsp;
-
-                            <a href="{{URL::to('/storage/'.$filePath.'/'.$data->file)}}"
-                               target="_blank"
-                               class="btn btn-danger btn-xs rounded-pill"
-                               data-placement="top" title="Download Image"
-                               style="margin: 10px 0 0 10px;"
-                               download=""
-                            >
-                                <i class="fa fa-download"></i>
-                            </a>
-
-                        </div>
-                    @endif
-
-                    <div class="form-group col-md-6">
-
-                        <label for="image">
-                            File
-                        </label>
-                        <input type="file"
-                               class="form-control-file profile-img"
-                               accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG, .pdf"
-                               name="file"
-                        >
-
-                        @if($errors->has('image') == null)
-                            <span class="text text-danger"
-                                  style="font-size: 14px;color: #ff042c"
-                            >
-                              {{trans('message.pages.users_management.file_upload_message')}}
-                            </span>
-                        @endif
-                    </div>
-
-
-                    <div class="form-group col-md-6">
-                        <label for="inputName">
-                            Event Date
-                            <span class="text text-danger">
-                                    *
-                                </span>
-                        </label>
-                        {!! Form::text('event_date',null,
-                                ['class'=>'form-control englishDatePicker eventDate',
+                        {!! Form::text('created_date',null,
+                                ['class'=>'form-control startDate englishDatePicker',
                                 'autocomplete'=>'off',
                                 'required',
                                 ])

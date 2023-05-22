@@ -25,12 +25,13 @@ class DatabaseSeeder extends Seeder
     {
         // check foreign  key
         if (env('DB_CONNECTION') == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
 
-        $this->call(MenusTableSeeder::class);
+        }
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
         $this->call(RolesTableSeeder::class);
         $this->call(UserRolesTableSeeder::class);
+        $this->call(MenusTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(AppSettingTableSeeder::class);
         $this->call(MailSettingTableSeeder::class);
@@ -39,5 +40,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PartnerTypeTableSeeder::class);
         $this->call(PublicationTypeTableSeeder::class);
         $this->call(ProgramTypeTableSeeder::class);
+        $this->call(PageSeeder::class);
+        $this->call(HeaderMenuSeeder::class);
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
