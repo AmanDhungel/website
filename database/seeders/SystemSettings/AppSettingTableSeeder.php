@@ -18,13 +18,13 @@ class AppSettingTableSeeder extends Seeder
         $rows = [
             [
                 'app_name' => 'Web Admin',
-                'app_short_name' => 'Cosmic Mansiri',
+                'app_short_name' => 'Website',
                 'login_attempt_limit' => '5',
                 'login_title' => 'Sign In to start your session',
                 'session_expire_time' => 60,
-                'office_address' => 'Bheri Na. Pa -4, Jajarkot',
-                'office_phone' => '089-430089',
-                'office_email_address' => 'hrdcjajarkot@gmail.com',
+                'office_address' => 'Anamnagar,kathmandu',
+                'office_phone' => '01-5539757',
+                'office_email_address' => 'info@omnibluetech.com',
             ],
         ];
         DB::table('app_settings')->insert($rows);

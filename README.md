@@ -1,4 +1,4 @@
-# ![Cosmic Mansiri Web management ]
+# [Web management ]
 
 # Getting started
 
