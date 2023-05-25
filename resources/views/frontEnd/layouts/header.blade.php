@@ -1,42 +1,42 @@
-<body>
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
+<header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <h1 class="ogo me-auto"><a href="{{url('/')}}"><img src="{{asset('images/main-logo.png')}}"></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-{{--      <a href="{{url('/')}}" class="logo me-auto me-lg-0"><img src="{{asset('images/main-logo.png')}}" alt="" class="img-fluid"></a>--}}
+        <a href="index.html" class="logo d-flex align-items-center">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <h1>Cosmic Mansiri<span>.</span></h1>
+        </a>
 
-        <nav id="navbar" class="navbar order-last order-lg-0">
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="{{url('/')}}l" class="active">Home</a></li>
-
-                <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">Teams</a></li>
-                        <li><a href="">Organizational Structure</a></li>
-                        <li><a href="">Executive Committee</a></li>
-                        <li><a href="">Staff Members</a></li>
+                        <li><a href="#">Dropdown 1</a></li>
+                        <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                            <ul>
+                                <li><a href="#">Deep Dropdown 1</a></li>
+                                <li><a href="#">Deep Dropdown 2</a></li>
+                                <li><a href="#">Deep Dropdown 3</a></li>
+                                <li><a href="#">Deep Dropdown 4</a></li>
+                                <li><a href="#">Deep Dropdown 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Dropdown 2</a></li>
+                        <li><a href="#">Dropdown 3</a></li>
+                        <li><a href="#">Dropdown 4</a></li>
                     </ul>
                 </li>
-
-                <li><a href="">Events</a></li>
-                <li><a href="">Notices</a></li>
-                <li><a href="">Gallery</a></li>
-                <li><a href="">Blogs</a></li>
-                <li><a href="">Contact</a></li>
-
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
-        <div class="header-social-links d-flex">
-            <a href="{{ systemSetting()->office_twitter_link }}" class="twitter"><i class="bu bi-twitter"></i></a>
-            <a href="{{systemSetting()->office_facebook_link}}" class="facebook"><i class="bu bi-facebook"></i></a>
-            <a href="{{systemSetting()->office_youtube_link}}" class="youtube"><i class="bu bi-youtube"></i></a>
-            <a href="{{systemSetting()->office_linked_in_link}}" class="linkedin"><i class="bu bi-linkedin"></i></a>
-        </div>
 
     </div>
 </header><!-- End Header -->

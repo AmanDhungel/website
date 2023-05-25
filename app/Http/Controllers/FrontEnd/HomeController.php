@@ -19,18 +19,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         try {
-
-            #banner page
-            $data['banners'] = $this->repository->getBanners();
-            #about us  page
-            $data['aboutUs'] = $this->repository->getAboutUs();
-            #about us  page
-            $data['teams'] = $this->repository->getTeams();
-            return view('frontEnd.index',$data);
+            return view('frontEnd.index');
         } catch (\Exception $e) {
-            dd($e);
             Session::flash('server_error', Lang::get('message.commons.technicalError'));
-
             return back();
         }
     }

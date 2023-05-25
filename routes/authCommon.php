@@ -8,9 +8,7 @@ use App\Http\Controllers\CkEditor\CkEditorController;
 use Illuminate\Support\Facades\Route;
 
 
-
-
-Route::get('webAdmin', [LoginController::class, 'showLoginForm'])
+Route::get('login', [LoginController::class, 'showLoginForm'])
     ->name('login');
 
 Route::post('login', [LoginController::class, 'login'])

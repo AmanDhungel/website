@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
+
 @include('frontEnd.layouts.head')
-@include('frontEnd.layouts.header')
-
 <body>
-
+    @include('frontEnd.layouts.header')
     @yield('content')
-</body>
 
-@include('frontEnd.layouts.footer')
-@yield('js')
+    @include('frontEnd.layouts.footer')
+    @yield('js')
+</body>
 </html>

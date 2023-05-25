@@ -1,4 +1,4 @@
-# ![HRDC Web management ]
+# ![Cosmic Mansiri Web management ]
 
 # Getting started
 

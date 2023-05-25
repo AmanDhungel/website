@@ -35,32 +35,6 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="small-box bg-primary {{setFont()}}">
-                            <div class="inner">
-                                <h3>  {{$total_subscriber}}</h3>
-                                <h5> Total Subscriber </h5>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-user-plus"></i>
-                            </div>
-                            <a href="{{url('subscriberList')}}" class="small-box-footer">{{trans('common.more_info')}} <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="small-box bg-danger {{setFont()}}">
-                            <div class="inner">
-                                <h3>  {{$today_subscriber}}</h3>
-                                <h5> Today  Subscriber </h5>
-                            </div>
-                            <div class="icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <a href="{{url('subscriberList')}}" class="small-box-footer">{{trans('common.more_info')}} <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
 
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="small-box bg-success {{setFont()}}">

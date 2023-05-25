@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FileUploadLibraryHelper;
-use App\Models\Announcement;
-use App\Models\AnnouncementType;
 use App\Models\HeaderMenu;
 use App\Models\Page;
-use App\Models\PartnerType;
-use App\Models\ProgramType;
-use App\Models\PublicationType;
 use App\Repositories\CommonRepository;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -61,10 +56,6 @@ class HeaderMenuController extends BaseController
             $data['commonRepo']=$this->model;
             $data['menuTypes'] = ['page' => 'Page', 'module' => 'Module', 'url' => 'Outer Link'];
             $data['pages'] = Page::query()->where('status', '1')->get();
-            $data['programTypes'] = ProgramType::all();
-            $data['publicationTypes'] = PublicationType::all();
-            $data['partnerTypes'] = PartnerType::all();
-            $data['announcementTypes'] = AnnouncementType::all();
             $data['menus'] = HeaderMenu::query()->where('status', '1')->get();
             $data['moduleMenus'] = ['front/program' => 'Program', 'front/publication' => 'Publication',
                 'front/partner' => 'Partner', 'front/announcement' => 'Announcement',

@@ -111,54 +111,6 @@
                         !!}
                     </div>
 
-                    <div class="form-group col-md-4 {{setFont()}}" id="programType" style="display: none;">
-                        <label for="inputName">
-                            {{trans('Program Type')}}
-                        </label>
-                        {!! Form::select('program_module_type',$programTypes->pluck('name','id'),null,
-                                ['class'=>'form-control select2',
-                                'placeholder'=>'Select Type',
-                                'autocomplete'=>'off',
-                                ])
-                        !!}
-                    </div>
-
-                    <div class="form-group col-md-4 {{setFont()}}" id="publicationType" style="display: none;">
-                        <label for="inputName">
-                            {{trans('Publication Type')}}
-                        </label>
-                        {!! Form::select('publication_module_type',$publicationTypes->pluck('name','id'),null,
-                                ['class'=>'form-control select2',
-                                'placeholder'=>'Select Type',
-                                'autocomplete'=>'off',
-                                ])
-                        !!}
-                    </div>
-
-                    <div class="form-group col-md-4 {{setFont()}}" id="partnerType" style="display: none;">
-                        <label for="inputName">
-                            {{trans('Partner Type')}}
-                        </label>
-                        {!! Form::select('partner_module_type',$partnerTypes->pluck('name','id'),null,
-                                ['class'=>'form-control select2',
-                                'placeholder'=>'Select Type',
-                                'autocomplete'=>'off',
-                                ])
-                        !!}
-                    </div>
-
-                    <div class="form-group col-md-4 {{setFont()}}" id="announcementType" style="display: none;">
-                        <label for="inputName">
-                            {{trans('Announcement Type')}}
-                        </label>
-                        {!! Form::select('announcement_module_type',$announcementTypes->pluck('name','id'),null,
-                                ['class'=>'form-control select2',
-                                'placeholder'=>'Select Type',
-                                'autocomplete'=>'off',
-                                ])
-                        !!}
-                    </div>
-
                     <div class="form-group col-md-4 {{setFont()}}">
                         <label for="inputName">
                             {{trans('Order')}}

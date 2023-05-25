@@ -17,8 +17,8 @@ class AppSettingTableSeeder extends Seeder
         DB::table('app_settings')->truncate();
         $rows = [
             [
-                'app_name' => 'HRDC Web Admin',
-                'app_short_name' => 'HRDC',
+                'app_name' => 'Web Admin',
+                'app_short_name' => 'Cosmic Mansiri',
                 'login_attempt_limit' => '5',
                 'login_title' => 'Sign In to start your session',
                 'session_expire_time' => 60,

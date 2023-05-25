@@ -2,15 +2,9 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\MasterSettings\BlogTypeTableSeeder;
-use Database\Seeders\MasterSettings\CmsPageTableSeeder;
 use Database\Seeders\MasterSettings\DesignationTableSeeder;
-use Database\Seeders\MasterSettings\PageTypeTableSeeder;
-use Database\Seeders\MasterSettings\PortfolioTypeTableSeeder;
 use Database\Seeders\SystemSettings\AppSettingTableSeeder;
 use Database\Seeders\SystemSettings\MailSettingTableSeeder;
-use Database\Seeders\SystemSettings\OtpSettingTableSeeder;
-use Database\Seeders\SystemSettings\SmsSettingTableSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -36,10 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AppSettingTableSeeder::class);
         $this->call(MailSettingTableSeeder::class);
         $this->call(DesignationTableSeeder::class);
-        $this->call(AnnouncementTypeTableSeeder::class);
-        $this->call(PartnerTypeTableSeeder::class);
-        $this->call(PublicationTypeTableSeeder::class);
-        $this->call(ProgramTypeTableSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(HeaderMenuSeeder::class);
 

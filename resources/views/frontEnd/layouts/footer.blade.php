@@ -1,83 +1,106 @@
 <!-- ======= Footer ======= -->
-<footer id="footer">
+<footer id="footer" class="footer">
 
-    <div class="footer-top">
+    <div class="footer-content position-relative">
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Company</h3>
-                    <p>
-                        Hilly Region Development Campaign (HRDC)  ,  <br>
-                       Jajarkot Non-profit Organization (NGO)
-                    </p>
-                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-info">
+                        <h3>Cosmic Mansiri</h3>
+                        <p>
+                            A108 Adam Street <br>
+                            NY 535022, USA<br><br>
+                            <strong>Phone:</strong> +1 5589 55488 55<br>
+                            <strong>Email:</strong> info@example.com<br>
+                        </p>
+                        <div class="social-links d-flex mt-3">
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div><!-- End footer info column-->
 
-                <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Contact Us</h3>
-                    <p>
-
-                        <strong>Phone:</strong> +977 - {{ systemSetting()->office_phone }}<br>
-                        <strong>Email:</strong> {{ systemSetting()->office_email_address }}<br>
-                        <strong>Address:</strong> {{ systemSetting()->office_address }}<br>
-                    </p>
-                </div>
-
-                <div class="col-lg-2 col-md-6 footer-links">
+                <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                        <li><a href="#">Privacy policy</a></li>
                     </ul>
-                </div>
+                </div><!-- End footer links column-->
 
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Product Management</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                    </ul>
+                </div><!-- End footer links column-->
 
-                <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Join Our Newsletter</h4>
-                    <p>Stay connected for latest news & updates.</p>
-                    <form action="" method="post">
-                        <input type="email" required name="email"><input type="submit" value="Subscribe">
-                    </form>
-                </div>
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Hic solutasetp</h4>
+                    <ul>
+                        <li><a href="#">Molestiae accusamus iure</a></li>
+                        <li><a href="#">Excepturi dignissimos</a></li>
+                        <li><a href="#">Suscipit distinctio</a></li>
+                        <li><a href="#">Dilecta</a></li>
+                        <li><a href="#">Sit quas consectetur</a></li>
+                    </ul>
+                </div><!-- End footer links column-->
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Nobis illum</h4>
+                    <ul>
+                        <li><a href="#">Ipsam</a></li>
+                        <li><a href="#">Laudantium dolorum</a></li>
+                        <li><a href="#">Dinera</a></li>
+                        <li><a href="#">Trodelas</a></li>
+                        <li><a href="#">Flexo</a></li>
+                    </ul>
+                </div><!-- End footer links column-->
 
             </div>
         </div>
     </div>
 
-    <div class="container d-md-flex py-4">
-
-        <div class="me-md-auto text-center text-md-start">
+    <div class="footer-legal text-center position-relative">
+        <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>HRDC</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Cosmic Mansiri</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                Designed by <a href="">Ominliblue</a>
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
-        <div class="social-links text-center text-md-right pt-3 pt-md-0">
-            <a href="{{ systemSetting()->office_twitter_link }}" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="{{systemSetting()->office_facebook_link}}" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="{{systemSetting()->office_youtube_link}}" class="youtube"><i class="bx bxl-youtube"></i></a>
-            <a href="{{systemSetting()->office_linked_in_link}}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
     </div>
-</footer><!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+</footer>
+<!-- End Footer -->
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+{{--<div id="preloader"></div>--}}
 
 <!-- Vendor JS Files -->
-<script src="{{asset('design/vendor/aos/aos.js')}}"></script>
-<script src="{{asset('design/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('design/vendor/glightbox/js/glightbox.min.js')}}"></script>
-<script src="{{asset('design/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-<script src="{{asset('design/vendor/swiper/swiper-bundle.min.js')}}"></script>
-<script src="{{asset('design/vendor/waypoints/noframework.waypoints.js')}}"></script>
-<script src="{{asset('design/vendor/php-email-form/validate.js')}}"></script>
+<script src="{{asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('frontend/vendor/aos/aos.js')}}"></script>
+<script src="{{asset('frontend/vendor/glightbox/js/glightbox.min.js')}}"></script>
+<script src="{{asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('frontend/vendor/swiper/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('frontend/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+<script src="{{asset('frontend/vendor/php-email-form/validate.js')}}"></script>
 
 <!-- Template Main JS File -->
-<script src="{{asset('design/js/main.js')}}"></script>
-
-</body>
-
-</html>
+<script src="{{asset('frontend/js/main.js')}}"></script>
